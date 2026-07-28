@@ -459,6 +459,20 @@ Whether this architectural approach proves broadly useful remains an open resear
 
 ---
 
+## References
+
+1. Koritala, S., et al. *Risk Analysis Techniques for Governed LLM-based Multi-Agent Systems*. arXiv:2508.05687, 2025. https://arxiv.org/abs/2508.05687
+
+2. Microsoft. *Microsoft Agent Framework*. https://github.com/microsoft/agent-framework
+
+3. Microsoft. *Semantic Kernel*. https://github.com/microsoft/semantic-kernel
+
+4. LangChain Inc. *LangGraph*. https://github.com/langchain-ai/langgraph
+
+5. Anthropic. *Model Context Protocol (MCP) Specification*. https://modelcontextprotocol.io
+
+---
+
 # Keywords
 
 Large Language Models, Prompt Engineering, Software Architecture, Microkernel Architecture, AI Governance, Workflow Systems, Domain Runtime, Agent Architecture, Executable Specifications, Architectural Engineering
