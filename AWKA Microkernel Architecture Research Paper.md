@@ -1,6 +1,6 @@
 # AWKA and LINDA as a Microkernel Architecture for Governed LLM Applications
 
-**Project Repository:** [https://github.com/ECOSystem-commits/AWKA](https://github.com/ECOSystem-commits/Abstract-Workflow-Kernel-Architecture)
+**Project Repository:** https://github.com/ECOSystem-commits/Abstract-Workflow-Kernel-Architecture
 
 ---
 
