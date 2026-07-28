@@ -1,0 +1,794 @@
+LINDA GENERIC HARDENED USER GUIDE
+Version 1.0.0-alpha.6
+Compatible with AWKA Kernel v1.0.0-alpha.4
+
+======================================================================
+1. PURPOSE OF THIS GUIDE
+======================================================================
+
+This guide explains how to install, configure, and operate the generic hardened
+LINDA Job Report Domain Runtime.
+
+LINDA manages an interpreting Job Report from source intake through:
+
+- source registration and approval;
+- request capture and clarification;
+- assignment planning and readiness;
+- service-delivery recording;
+- post-assignment reporting;
+- validation and finalization;
+- controlled export, versioning, restoration, and closure.
+
+The generic release contains no organization-specific identity. The implementing
+organization supplies its authorized configuration during installation. That
+configuration controls branding and organizational defaults only. It does not
+constitute evidence for a particular Job Report.
+
+LINDA runs as a Domain Runtime on AWKA. AWKA must be bootstrapped and READY
+before LINDA is activated.
+
+======================================================================
+2. RELEASE COMPONENTS
+======================================================================
+
+The generic package uses three uploaded executable/declarative components and
+one message-delivered installation directive.
+
+Upload exactly these three files:
+
+1. 001_LINDA_Generic_Manifest_v1.0.0-alpha.6.json
+2. 002_LINDA_Generic_Model_v1_0_0_alpha_6.py
+3. 003_LINDA_Generic_Verification_v1_0_0_alpha_6.py
+
+Paste the contents of this file as a message after uploading the components:
+
+000_LINDA_Generic_Install_Prompt_v1.0.0-alpha.6.txt
+
+The installation prompt is not a fourth uploaded component and does not require
+a SHA-256 digest.
+
+Do not mix releases. Do not use files with duplicate-download suffixes such as
+"(1)", "(2)", or "copy". Each filename must match exactly.
+
+======================================================================
+3. SYSTEM ARCHITECTURE
+======================================================================
+
+AWKA provides the Kernel, Definition Registries, immutable Snapshots, event
+history, artifact receipts, concurrency controls, and activation process.
+
+LINDA provides the Job Report business model, capabilities, workflow,
+validators, renderers, business rules, commands, and controlled fields.
+
+The generic hardened Model contains:
+
+- 84 controlled Job Report fields;
+- 4 report sections;
+- 7 repeatable record types;
+- 6 entities;
+- 10 capabilities;
+- 9 validators;
+- 5 renderers;
+- 10 business rules;
+- 23 workflow states;
+- 26 workflow transitions;
+- 8 hardening control areas.
+
+Domain activation creates and freezes LINDA Definition Registries. It does not
+create a Job Report. A Job Report is created only after an authorized user runs:
+
+Run New Job Report
+
+======================================================================
+4. JOB REPORT STRUCTURE
+======================================================================
+
+SECTION 1 - ASSIGNMENT AGREEMENT AND WORKING CONDITIONS
+
+The controlled pricing field in this section is named Interpreter Rate Record.
+
+This section records the request, client and end user, setting, purpose,
+languages and directions, interpreting modes, delivery configuration, schedule,
+breaks, staffing plan, exact interpreter rates, travel terms, safety,
+equipment, remote readiness, preparation materials, recording conditions, and
+assignment terms.
+
+SECTION 2 - ASSIGNMENT READINESS AND SERVICE DELIVERY
+
+This section records assigned interpreters, coordinator, backup resources,
+qualification match, acceptance of working conditions, preparation, protocol
+acknowledgment, readiness approval, actual times, actual delivery mode, actual
+team, material variances, events or exceptions, and service-delivery status.
+
+SECTION 3 - COMPLETION AND POST-ASSIGNMENT REPORTING
+
+The controlled work-unit field in this section is named Actual Work Units Record.
+
+This section records actual duration, breaks, completion summary, incidents,
+actions, linked corrective-action records, debriefing, feedback, client
+acceptance, accounting-documentation status, accounting reference, exact days
+and hours worked, wellbeing-risk reporting, and restricted follow-up reference.
+
+SECTION 4 - APPROVAL AND RECORD CONTROL
+
+This section records report completion, reviewer approval, review outcome,
+final status, controlled-record reference, final-artifact reference, retention
+class, related controlled records, and record-control completion.
+
+======================================================================
+5. REPEATABLE RECORDS
+======================================================================
+
+LINDA supports these repeatable child records:
+
+1. Language Combination
+2. Team Composition
+3. Preparation Material
+4. Assigned Interpreter
+5. Assignment Event or Exception
+6. Feedback
+7. Related Controlled Record
+
+Repeatable records allow multiple languages, interpreters, materials, events,
+or references without flattening or duplicating the parent Job Report.
+
+======================================================================
+6. HARDENING RULES
+======================================================================
+
+6.1 EVIDENCE CONTROL
+
+Every populated business value must be supported by one of the following:
+
+- an approved Source Packet;
+- an authorized human entry;
+- a registered controlled default; or
+- a registered deterministic derivation.
+
+Unsupported information remains null with a required action. Ambiguous
+information remains null under authorized review. LINDA does not guess,
+normalize, repair, or infer unsupported business facts.
+
+6.2 HUMAN AND AI IDENTITY SEPARATION
+
+AI agents and tool identities cannot populate human operational fields such as:
+
+- Request Received By;
+- Assignment Coordinator;
+- Readiness Approver;
+- Job Report Completed By; or
+- Reviewed / Approved By.
+
+AI and tool identities remain in AWKA technical provenance only.
+
+6.3 FINANCIAL-CALCULATION PROHIBITION
+
+LINDA records only:
+
+- the exact interpreter daily rate;
+- the exact interpreter hourly rate;
+- currency and rate units exactly as provided;
+- optional rate terms or agreement reference;
+- exact total days worked; and
+- exact total hours worked.
+
+When interpreters have different rates or work units, LINDA records each
+interpreter separately.
+
+LINDA must not calculate or display:
+
+- rate multiplied by days;
+- rate multiplied by hours;
+- extended cost;
+- aggregate labor cost;
+- overtime cost;
+- taxes;
+- invoice total; or
+- amount payable.
+
+Calculations belong in the linked accounting record or accounting system.
+
+6.4 SECRET MINIMIZATION
+
+Standard Job Report artifacts must not display cleartext:
+
+- passwords;
+- meeting access codes;
+- access tokens;
+- private keys;
+- restricted links; or
+- other secret credentials.
+
+LINDA displays a controlled reference to the restricted access record instead.
+
+6.5 PRESENTATION SAFETY
+
+Standard artifacts must:
+
+- use human-readable statuses;
+- suppress internal machine-status codes;
+- use verified glyphs or ASCII-safe hyphens;
+- reject replacement glyphs, black squares, and broken bullets;
+- display active stage-relevant fields individually; and
+- render linked sensitive records as references only.
+
+6.6 EXTERNAL RECORD BOUNDARIES
+
+The Job Report references rather than duplicates:
+
+- resource qualification records;
+- interpreting protocols;
+- detailed incident and corrective-action records;
+- detailed accounting records;
+- restricted wellbeing follow-up records; and
+- AWKA technical and audit stores.
+
+6.7 CROSS-FIELD RECONCILIATION
+
+Before finalization, LINDA reconciles dates, times, durations, identities,
+language teams, interpreter counts, rates, and work units. A blocking conflict
+prevents finalization.
+
+6.8 ARTIFACT INTEGRITY
+
+A controlled final artifact requires:
+
+- an immutable selected Snapshot;
+- a valid Snapshot SHA-256 digest;
+- an eligible pure renderer;
+- a final artifact SHA-256 digest;
+- an Artifact Receipt created after final hashing; and
+- a successful export event.
+
+======================================================================
+7. ORGANIZATION CONFIGURATION
+======================================================================
+
+The generic release requires authorized values for 12 configuration keys:
+
+organization_name
+organization_short_name
+organization_address
+organization_email
+organization_phone
+organization_website
+language_coordinator_name
+language_coordinator_email
+language_coordinator_phone
+records_policy
+accounting_system_reference
+restricted_access_store
+
+The corresponding placeholders are:
+
+[IMPLEMENTING_ORGANIZATION_NAME]
+[ORGANIZATION_SHORT_NAME]
+[IMPLEMENTING_ORGANIZATION_ADDRESS]
+[IMPLEMENTING_ORGANIZATION_EMAIL]
+[IMPLEMENTING_ORGANIZATION_PHONE]
+[IMPLEMENTING_ORGANIZATION_WEBSITE]
+[LANGUAGE_COORDINATOR_NAME]
+[LANGUAGE_COORDINATOR_EMAIL]
+[LANGUAGE_COORDINATOR_PHONE]
+[ORGANIZATION_RETENTION_POLICY]
+[ACCOUNTING_SYSTEM_REFERENCE]
+[RESTRICTED_ACCESS_RECORD_STORE]
+
+Rules:
+
+- Replace every placeholder with a nonempty authorized value.
+- Do not leave bracketed placeholders unresolved.
+- Do not include secrets in configuration.
+- Use a controlled reference for restricted systems or locations.
+- Configuration may supply branding and controlled defaults only.
+- Configuration does not establish Job Report facts.
+- Configuration changes must be authorized and auditable.
+- Configuration substitution must not modify LINDA behavior.
+
+Recommended configuration command:
+
+Configure LINDA Organization
+
+Provide the 12 key-value pairs when requested. LINDA must validate the
+configuration before activation and record its authorized acceptance in the
+audit trail.
+
+======================================================================
+8. INSTALLATION
+======================================================================
+
+STEP 1 - BOOTSTRAP AWKA
+
+Install and bootstrap AWKA v1.0.0-alpha.4. Continue only after receiving:
+
+AWKA Kernel v1.0.0-alpha.4 bootstrapped and READY. Executable conformance: 17/17 PASS. Awaiting Domain Runtime Definition.
+
+STEP 2 - UPLOAD GENERIC LINDA COMPONENTS
+
+Upload exactly:
+
+001_LINDA_Generic_Manifest_v1.0.0-alpha.6.json
+002_LINDA_Generic_Model_v1_0_0_alpha_6.py
+003_LINDA_Generic_Verification_v1_0_0_alpha_6.py
+
+STEP 3 - PROVIDE AUTHORIZED ORGANIZATION CONFIGURATION
+
+Provide all 12 configuration values. Do not provide secrets.
+
+STEP 4 - PASTE THE INSTALLATION DIRECTIVE
+
+Paste the complete contents of:
+
+000_LINDA_Generic_Install_Prompt_v1.0.0-alpha.6.txt
+
+STEP 5 - VERIFY SUCCESS
+
+Successful activation returns exactly:
+
+LINDA Generic Hardened Domain Runtime v1.0.0-alpha.6 activated on AWKA v1.0.0-alpha.4. Executable conformance: 40/40 PASS. Organization configuration accepted. Awaiting workflow command: Run New Job Report.
+
+Do not operate LINDA if activation fails. Correct every reported blocking defect
+and rerun activation from the READY Kernel state.
+
+IMPORTANT: A preliminary Manifest containing sha256 = null or
+pending_component_creation cannot activate. Use the finalized Manifest whose
+Generic Model and Generic Verification Suite component digests are verified.
+
+======================================================================
+9. SOURCE PACKETS AND CANDIDATE FACTS
+======================================================================
+
+A Source Packet is a registered email, attachment, message, form, or other
+source supplied in the current conversation.
+
+When a source is registered, LINDA:
+
+1. assigns a Source Packet ID, such as SRC-001;
+2. preserves the source and its metadata;
+3. extracts Candidate Facts;
+4. records evidence excerpts and proposed mappings;
+5. leaves the source pending coordinator review; and
+6. does not populate controlled fields before approval.
+
+A Candidate Fact is not automatically canonical. It may be:
+
+- explicit;
+- ambiguous;
+- derived by a registered rule;
+- conflicting; or
+- unsupported.
+
+Only supported Candidate Facts from an approved Source Packet may populate
+controlled fields. Ambiguous facts remain under review even after the source is
+approved.
+
+======================================================================
+10. CREATE A NEW JOB REPORT
+======================================================================
+
+Upload or paste at least one source, then run:
+
+Run New Job Report
+
+Expected behavior:
+
+- one Job Report Workflow Instance is created;
+- the initial source is registered;
+- controlled fields remain unchanged until source approval;
+- Version 1 Snapshot is created;
+- the workflow enters SOURCE_LOADED; and
+- LINDA returns the Job Report ID and Source Packet ID.
+
+Do not run this command to activate LINDA. Domain activation and Job Report
+creation are separate operations.
+
+======================================================================
+11. REGISTER ADDITIONAL SOURCES
+======================================================================
+
+Upload or paste the additional evidence, then run:
+
+Register this as an additional Source Packet.
+
+LINDA should assign a new exact ID, such as SRC-002. Review each Source Packet
+independently.
+
+======================================================================
+12. APPROVE OR REJECT SOURCES
+======================================================================
+
+Approve a source using its exact ID:
+
+Approve SRC-001 for field population
+
+Reject a source using its exact ID:
+
+Reject SRC-001
+
+Replace SRC-001 with the actual Source Packet ID.
+
+Rules:
+
+- Vague instructions such as "approve that file" cause no mutation.
+- Source approval does not approve ambiguous Candidate Facts.
+- A rejected source remains in the audit history.
+- Candidate Facts from a rejected source cannot populate fields.
+- Approval and rejection require an authorized human actor.
+
+======================================================================
+13. UPDATE THE JOB REPORT
+======================================================================
+
+After approving evidence or providing an authorized entry, run:
+
+Update Job Report
+
+LINDA validates the change and, if accepted:
+
+- applies supported values;
+- preserves prior Snapshots;
+- creates a complete successor Snapshot;
+- updates field provenance;
+- appends events; and
+- advances the workflow only when transition conditions are satisfied.
+
+Each update requires the expected prior version and state digest internally.
+Stale updates fail without changing the active version.
+
+======================================================================
+14. VALIDATE THE CURRENT REPORT
+======================================================================
+
+Run:
+
+Validate Current Job Report
+
+Validation checks include:
+
+- source approval and evidence support;
+- Candidate Fact status;
+- workflow state and required controls;
+- 84-field Snapshot completeness;
+- repeatable-record integrity;
+- required human identities;
+- language direction;
+- dates, times, duration, and schedule consistency;
+- interpreter and team consistency;
+- exact rate and work-unit treatment;
+- absence of financial calculations;
+- secret minimization;
+- linked-record boundaries;
+- presentation and glyph safety; and
+- artifact eligibility.
+
+Possible QA results are:
+
+Pass
+Pass with Warnings
+Pass with Red Flags
+Fail
+
+Validation does not change business facts.
+
+======================================================================
+15. FINALIZE THE JOB REPORT
+======================================================================
+
+Run:
+
+Finalize Job Report
+
+Finalization is accepted only when all applicable controls pass, including:
+
+- required evidence;
+- human actor validity;
+- workflow readiness;
+- cross-field reconciliation;
+- no prohibited financial calculations;
+- secret minimization;
+- presentation safety;
+- linked-record boundaries;
+- complete record controls; and
+- Snapshot integrity.
+
+If a blocking finding exists, LINDA must reject finalization and leave the prior
+active Snapshot unchanged.
+
+======================================================================
+16. EXPORT ARTIFACTS
+======================================================================
+
+Export the current Job Report:
+
+Export Current Job Report in DOCX
+Export Current Job Report in PDF
+Export Current Job Report in HTML
+
+Export a historical version:
+
+Export Job Report Version 2 in DOCX
+Export Job Report Version 2 in PDF
+Export Job Report Version 2 in HTML
+
+Replace the version number and format as needed.
+
+Artifact types may include:
+
+- SOURCE REVIEW DIAGNOSTIC
+- DRAFT EXPORT
+- FINAL EXPORT WITH WARNINGS
+- FINAL EXPORT
+- QA DIAGNOSTIC ONLY
+
+Every Draft Export must show this banner on every page:
+
+DRAFT EXPORT - Not approved for final filing
+
+The export operation must not change the selected Snapshot. After rendering,
+LINDA hashes the final artifact and creates an Artifact Receipt.
+
+======================================================================
+17. ARTIFACT RECEIPTS
+======================================================================
+
+A final Artifact Receipt should identify:
+
+- Export Receipt ID;
+- selected Snapshot ID;
+- selected Snapshot SHA-256;
+- artifact filename;
+- final artifact SHA-256;
+- renderer ID;
+- selected version;
+- active version at request time;
+- QA result;
+- operation and export status; and
+- timestamp.
+
+Show a receipt with:
+
+Show Export Receipt EXP-001
+
+Replace EXP-001 with the exact receipt ID.
+
+A final artifact reference alone is not a substitute for the post-hash Artifact
+Receipt.
+
+======================================================================
+18. VERSION, STATE, EVENT, AND PROVENANCE COMMANDS
+======================================================================
+
+List all Job Report versions:
+
+List Job Report Versions
+
+Show the current workflow state:
+
+Show Current Session State
+
+Show the event history:
+
+Show Session Event Register
+
+Show field provenance for the current version:
+
+Show Field Provenance for Current Version
+
+Show field provenance for a historical version:
+
+Show Field Provenance for Job Report Version 2
+
+These commands are read-only and do not change the active Job Report.
+
+======================================================================
+19. RESTORE A HISTORICAL VERSION
+======================================================================
+
+Restore a historical Snapshot as a new successor version:
+
+Restore Job Report Version 2 as a new version.
+
+Include a reason when requested:
+
+Restore Job Report Version 2 as a new version because the later amendment was withdrawn.
+
+Restoration never overwrites history. The historical Snapshot remains unchanged,
+and LINDA creates a new active version derived from it.
+
+======================================================================
+20. CLOSE THE JOB REPORT
+======================================================================
+
+After final export and record-control completion, run:
+
+Close Job Report Session
+
+Closure requires:
+
+- an eligible final artifact;
+- a valid Artifact Receipt;
+- record-control completion;
+- required accounting-documentation status;
+- resolved required follow-up records; and
+- an authorized closer.
+
+If closure requirements are incomplete, the workflow remains open.
+
+======================================================================
+21. STANDARD COMMAND REFERENCE
+======================================================================
+
+Configure LINDA Organization
+
+Run New Job Report
+
+Register this as an additional Source Packet.
+
+Approve SRC-001 for field population
+
+Reject SRC-001
+
+Update Job Report
+
+Validate Current Job Report
+
+Finalize Job Report
+
+Export Current Job Report in DOCX
+
+Export Current Job Report in PDF
+
+Export Current Job Report in HTML
+
+Export Job Report Version 2 in DOCX
+
+Export Job Report Version 2 in PDF
+
+Export Job Report Version 2 in HTML
+
+List Job Report Versions
+
+Show Current Session State
+
+Show Session Event Register
+
+Show Field Provenance for Current Version
+
+Show Field Provenance for Job Report Version 2
+
+Show Export Receipt EXP-001
+
+Restore Job Report Version 2 as a new version.
+
+Close Job Report Session
+
+======================================================================
+22. RECOMMENDED OPERATING SEQUENCE
+======================================================================
+
+1. Confirm generic LINDA is active.
+2. Upload or paste the initial request.
+3. Run New Job Report.
+4. Review the assigned Source Packet ID.
+5. Approve or reject the exact Source Packet.
+6. Resolve ambiguous facts and missing required information.
+7. Update Job Report.
+8. Register and approve additional sources as needed.
+9. Complete assignment planning and readiness controls.
+10. Validate Current Job Report.
+11. Record actual service-delivery information after the event.
+12. Record exact rates and exact days/hours worked without calculations.
+13. Complete post-assignment, approval, and record-control fields.
+14. Validate Current Job Report again.
+15. Finalize Job Report.
+16. Export the permitted final artifact.
+17. Verify its Artifact Receipt.
+18. Close Job Report Session.
+
+======================================================================
+23. COMMON ERRORS AND CORRECTIONS
+======================================================================
+
+ERROR: LINDA activation fails because component hashes are pending.
+CORRECTION: Replace the preliminary Manifest with the finalized Manifest that
+contains exact lowercase SHA-256 hashes and digest_status = verified.
+
+ERROR: Organization placeholders remain unresolved.
+CORRECTION: Supply all 12 authorized configuration values and validate them.
+
+ERROR: An AI agent appears in a human coordinator or approver field.
+CORRECTION: Replace it with an authorized human or controlled person reference.
+Keep the AI identity in technical provenance.
+
+ERROR: The report contains a calculated price or invoice total.
+CORRECTION: Remove the calculation. Keep only exact daily/hourly rates and exact
+days/hours worked. Reference the accounting record for calculations.
+
+ERROR: A meeting password or access code appears in the report.
+CORRECTION: Remove the cleartext value and use the restricted-access record
+reference.
+
+ERROR: Language names are present but direction is missing.
+CORRECTION: Keep the languages under review and obtain explicit direction. Do
+not infer bidirectionality.
+
+ERROR: A vague approval is entered.
+CORRECTION: Use the exact Source Packet ID, for example:
+Approve SRC-002 for field population
+
+ERROR: Final export exists but no Artifact Receipt is available.
+CORRECTION: Regenerate through the registered export Capability, hash the final
+artifact, and create the post-hash receipt.
+
+ERROR: Broken bullets, black squares, or replacement glyphs appear.
+CORRECTION: Use child tables or ASCII-safe hyphens and rerun presentation
+validation before finalization.
+
+ERROR: A historical version needs to become active again.
+CORRECTION: Restore it as a new version. Never overwrite existing history.
+
+======================================================================
+24. FAIL-CLOSED EXPECTATIONS
+======================================================================
+
+LINDA fails closed. When a required check fails, it must not:
+
+- guess missing values;
+- silently repair evidence;
+- accept unresolved organization placeholders;
+- calculate financial totals;
+- place AI identities in human fields;
+- expose secrets;
+- publish partial Definitions;
+- commit a failed update;
+- claim a successful final export without a receipt; or
+- create a Workflow Instance after failed Domain Activation.
+
+The system reports the component, failed check, defect, and required correction.
+
+======================================================================
+25. QUICK COORDINATOR CHECKLIST
+======================================================================
+
+Before creating a Job Report:
+
+[ ] AWKA is READY or ACTIVE with the Generic LINDA Domain active.
+[ ] Generic LINDA activation passed 40/40 tests.
+[ ] Organization configuration was accepted.
+[ ] No required placeholder is unresolved.
+
+Before approving a source:
+
+[ ] The exact Source Packet ID is known.
+[ ] The source belongs to the current Job Report.
+[ ] Ambiguous Candidate Facts have been identified.
+
+Before assignment approval:
+
+[ ] Language directions are explicit.
+[ ] Modes and delivery configuration are confirmed.
+[ ] Team composition is complete.
+[ ] Qualification references resolve.
+[ ] Working conditions are accepted.
+[ ] Secrets are stored only by controlled reference.
+
+Before finalization:
+
+[ ] Actual times and work units are complete.
+[ ] Rates are recorded exactly without calculations.
+[ ] Client acceptance and accounting status are separate.
+[ ] Incident and wellbeing controls are complete.
+[ ] Human identities are valid.
+[ ] Cross-field reconciliation passes.
+[ ] Record-control fields are complete.
+
+Before closure:
+
+[ ] Final artifact was generated from the finalized Snapshot.
+[ ] Artifact Receipt exists after final hashing.
+[ ] Record control is complete.
+[ ] Required linked records resolve.
+
+======================================================================
+END OF GUIDE
+======================================================================

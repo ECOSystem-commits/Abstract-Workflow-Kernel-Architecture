@@ -1,0 +1,386 @@
+# AWKA
+
+# Abstract Workflow Kernel Architecture
+
+*A microkernel architecture for governed Large Language Model (LLM) applications.*
+
+---
+
+## Overview
+
+AWKA is an architectural research project exploring whether complex LLM applications should be governed by software architecture rather than increasingly sophisticated prompts.
+
+Instead of embedding workflow logic, validation, state management, and governance directly into prompts, AWKA separates these concerns into a reusable kernel.
+
+The result is a layered architecture in which:
+
+- the **Kernel** provides architectural services,
+- **Domain Runtimes** provide business semantics,
+- **Workflow Instances** represent individual operational sessions.
+
+AWKA is not a chatbot, prompt library, or agent framework.
+
+It is an architectural kernel for governed AI applications.
+
+---
+
+# Research Motivation
+
+Prompt engineering has enabled remarkable progress in controlling LLM behavior.
+
+As systems become increasingly complex, however, prompts often begin to assume responsibilities traditionally associated with software architecture, including:
+
+- workflow orchestration
+- validation
+- authorization
+- state management
+- evidence tracking
+- version control
+- artifact generation
+
+AWKA explores an alternative hypothesis:
+
+> Complex LLM applications may become more maintainable when governance is expressed through architecture rather than prompt composition.
+
+---
+
+# Core Design Principles
+
+AWKA is built around several architectural principles.
+
+- Domain-independent kernel
+- Behavior defined through registered capabilities
+- Canonical State as the authoritative operational state
+- Validation before mutation
+- Evidence before assertion
+- Immutable Snapshots
+- Pure renderers
+- Atomic state transitions
+- Executable conformance verification
+- Runtime immutability after activation
+
+---
+
+# Architecture
+
+```
+                    User
+
+                     │
+
+             Natural Language
+
+                     │
+
+        ┌────────────────────────┐
+        │      AWKA Kernel        │
+        └────────────────────────┘
+
+           Constitution
+           Runtime
+           Verification
+
+                     │
+
+        Domain Runtime Activation
+
+                     │
+
+        ┌────────────────────────┐
+        │    Domain Runtime       │
+        └────────────────────────┘
+
+           Entities
+           Capabilities
+           Validators
+           Workflows
+           Renderers
+           Policies
+
+                     │
+
+        Workflow Instance
+
+                     │
+
+ Evidence → Candidate Facts → Canonical State
+                     │
+                Snapshots
+                     │
+                Artifacts
+```
+
+---
+
+# Project Structure
+
+```
+AWKA/
+
+├── paper/
+│     Research paper
+│
+├── awka/
+│     Kernel implementation
+│
+├── linda/
+│     Reference Domain Runtime
+│
+├── docs/
+│     User Guides
+│
+└── examples/
+```
+
+---
+
+# Repository Components
+
+## AWKA Kernel
+
+The kernel provides reusable architectural services.
+
+It contains:
+
+- Constitution
+- Runtime
+- Verification Suite
+- Bootstrap Directive
+- User Guide
+
+The kernel contains **no business knowledge**.
+
+---
+
+## LINDA
+
+LINDA is the reference Domain Runtime.
+
+It demonstrates how a complete business workflow can be implemented without modifying the kernel.
+
+It contributes:
+
+- Domain entities
+- Controlled workflow
+- Business rules
+- Capabilities
+- Validators
+- Renderers
+- Tool bindings
+- Verification suite
+
+The current implementation models a controlled language-services Job Report workflow.
+
+---
+
+# Execution Model
+
+AWKA operates in three stages.
+
+```
+Bootstrap Kernel
+
+↓
+
+Activate Domain Runtime
+
+↓
+
+Create Workflow Instance
+```
+
+These stages remain intentionally separate.
+
+Activating a Domain Runtime prepares the execution environment but does **not** create business data.
+
+---
+
+# Architectural Layers
+
+```
+Layer 1
+
+AWKA Kernel
+
+↓
+
+Layer 2
+
+Domain Runtime
+
+↓
+
+Layer 3
+
+Workflow Instance
+```
+
+This separation allows multiple domains to share the same architectural kernel.
+
+---
+
+# Current Reference Runtime
+
+The repository currently includes:
+
+## Generic LINDA
+
+A non-proprietary reference implementation demonstrating:
+
+- evidence registration
+- candidate fact extraction
+- human approval
+- canonical state
+- immutable snapshots
+- controlled exports
+- executable conformance verification
+
+---
+
+# Example Lifecycle
+
+```
+Source Packet
+
+↓
+
+Evidence
+
+↓
+
+Candidate Facts
+
+↓
+
+Approval
+
+↓
+
+Canonical State
+
+↓
+
+Snapshot
+
+↓
+
+Artifact
+```
+
+---
+
+# Why "Microkernel"?
+
+The architecture intentionally resembles a microkernel operating system.
+
+The kernel provides stable infrastructure.
+
+Business behavior is supplied by loadable Domain Runtimes.
+
+```
+Kernel
+
+↓
+
+Domain Runtime
+
+↓
+
+Workflow
+```
+
+The kernel never changes when a new business domain is introduced.
+
+---
+
+# Current Status
+
+Current maturity:
+
+```
+AWKA
+Version 1.0.0-alpha
+
+Status
+
+Research Prototype
+```
+
+The project is currently intended for:
+
+- architectural research
+- prompt engineering research
+- software architecture exploration
+- executable specification experiments
+- AI workflow governance
+
+It is **not** production software.
+
+---
+
+# Research Goals
+
+The project explores several research questions.
+
+- Can architectural kernels improve LLM governance?
+- Can prompts become transport rather than behavioral authority?
+- Can business behavior be isolated into reusable Domain Runtimes?
+- Can executable architectural verification improve reliability?
+- Can deterministic workflow governance coexist with probabilistic reasoning?
+
+These questions remain open and are intended to encourage discussion.
+
+---
+
+# Future Work
+
+Planned directions include:
+
+- additional Domain Runtimes
+- SDK for Domain Runtime development
+- function-calling integration
+- persistent runtime environments
+- formal architectural specifications
+- empirical evaluation against existing agent frameworks
+
+---
+
+# Paper
+
+The accompanying paper describes the architectural motivation behind AWKA.
+
+**Title**
+
+> Beyond Prompt Engineering: A Microkernel Architecture for Governed LLM Applications
+
+---
+
+# Contributing
+
+This repository is currently an architectural research project.
+
+Suggestions, critiques, discussions, and architectural feedback are welcome.
+
+---
+
+# License
+
+(To be determined.)
+
+---
+
+# Citation
+
+If referencing this work, please cite the accompanying paper.
+
+---
+
+# Acknowledgements
+
+AWKA originated while exploring architectural approaches beyond traditional prompt engineering during the **AI Agent Developer Specialization** and **Prompt Engineering for ChatGPT** courses developed at Vanderbilt University.
+
+The project is an independent research effort and is not affiliated with or endorsed by Vanderbilt University, Coursera, or the course authors.
+
+---
+
+> "Behavior is a consequence of architecture."
