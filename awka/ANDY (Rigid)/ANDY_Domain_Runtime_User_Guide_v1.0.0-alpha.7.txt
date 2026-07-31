@@ -1,0 +1,1215 @@
+ANDY (Rigid) DOMAIN RUNTIME USER GUIDE
+Version 1.0.0-alpha.7
+Compatible with AWKA Kernel v1.0.0-alpha.4
+Release theme: Rigid Governance Workflow and AWKA Alpha.4 Event Registry Projection Compatibility Release
+
+======================================================================
+1. PURPOSE OF THIS GUIDE
+======================================================================
+
+This guide explains how to install, activate, and operate the ANDY Domain
+Runtime v1.0.0-alpha.7.
+
+ANDY means Adopted Narrative Directional Yielder.
+
+ANDY manages long-running, structured, artifact-centered workflows from
+narrative intake through:
+- workflow creation;
+- user-provided narrative adoption;
+- narrative validation;
+- exact stage prompt submission;
+- stage execution;
+- draft artifact generation;
+- artifact registration;
+- artifact acceptance or rejection;
+- Evidence Packet attachment;
+- artifact dependency-eligibility promotion;
+- stage completion evaluation;
+- explicit stage completion confirmation;
+- stage advancement;
+- workflow finalization;
+- controlled final artifact-set export;
+- Artifact Receipt and Artifact Set Receipt generation;
+- artifact body resolution;
+- export projection QA;
+- runtime state serialization;
+- workflow closure.
+
+ANDY runs as a Domain Runtime on AWKA. AWKA must be bootstrapped and READY
+before ANDY is activated.
+
+The most important operating rule is:
+
+Accepted dependency-eligible artifacts and Evidence Packets, as represented in
+committed Canonical State, form the authoritative procedural record.
+Conversation history, model output, draft artifacts, registered-only artifacts,
+accepted-pending-evidence artifacts, rejected artifacts, disallowed artifacts,
+out-of-band files, and tool output are not active procedural context unless
+admitted through registered ANDY Capabilities and Validators.
+
+ANDY is not a general conversation mode. A workflow is not a conversation. A
+workflow is a governed narrative composed of procedural stages, artifact slots,
+accepted artifact versions, Evidence Packets, Snapshots, receipts, and
+explicit user-confirmed transitions.
+
+======================================================================
+2. RIGID ALPHA.7 OPERATING NOTE
+======================================================================
+
+ANDY v1.0.0-alpha.7 is a rigid governance version of ANDY.
+
+Rigid means that the workflow is intentionally controlled by registered
+Capability routes, Validator gates, precondition checks, stage state, artifact
+slot requirements, Evidence Packet linkage, and explicit user-confirmed
+transitions. The user may request action, but the user cannot bypass the
+workflow contract by using vague language, shorthand commands, premature
+advancement, or conversational approval.
+
+The first alpha.7 workflow test demonstrated this rigidity:
+- an incomplete stage execution command did not mutate state;
+- a shorthand Accept command did not accept an artifact;
+- an attempt to evaluate and advance in the same command evaluated the stage but
+  blocked advancement until explicit completion confirmation occurred;
+- every accepted artifact still had to enter the registered artifact lifecycle;
+- every stage still had to be evaluated, explicitly confirmed, and advanced;
+- finalization, export, and closure remained separate governed operations.
+
+This is expected behavior. ANDY alpha.7 is designed so that not even an
+authorized user can deviate from the active governance workflow. Authority is
+expressed through exact registered commands, not through conversational intent.
+
+======================================================================
+3. RELEASE COMPONENTS
+======================================================================
+
+The ANDY alpha.7 package uses three uploaded Domain Runtime components and one
+message-delivered installation directive.
+
+Upload exactly these three files:
+- 001_ANDY_Manifest_v1.0.0-alpha.7.json
+- 002_ANDY_Model_v1_0_0_alpha_7.py
+- 003_ANDY_Verification_v1_0_0_alpha_7.py
+
+Paste the contents of this helper file as the activation message after the
+three components are available:
+
+- 000_ANDY_Install_Prompt_v1.0.0-alpha.7.txt
+
+The installation prompt is not a fourth uploaded component and does not require
+a Manifest component digest.
+
+Do not mix releases. Do not use files with duplicate-download suffixes such as:
+- (1)
+- (2)
+- copy
+- revised
+- final-final
+
+Each filename must match exactly.
+
+IMPORTANT: A preliminary Manifest containing pending component hashes cannot
+activate. Use the finalized patched alpha.7 Manifest whose Model and
+Verification Suite component digests are verified.
+
+Patched alpha.7 reissue component hashes:
+
+000_ANDY_Install_Prompt_v1.0.0-alpha.7.txt
+95abee90155ad766d4a68fca16e73a675d316882401b92885600c17bbf50a41d
+
+001_ANDY_Manifest_v1.0.0-alpha.7.json
+d22ec0ac24902cda3dde2063cf792bf0f351d276b2b018cc1222550fa57ffbf2
+
+002_ANDY_Model_v1_0_0_alpha_7.py
+99896e5584e5c7ddf347b4584f751c530985c7e16c8d602738b2a326bc2411ca
+
+003_ANDY_Verification_v1_0_0_alpha_7.py
+650adfe2c5b602789864e1d5f9be17230d978815ad539957eae8f2e315e142ee
+
+Last verified patched result artifact:
+
+ANDY_Verification_Result_v1.0.0-alpha.7.final_patched.json
+51c6f7eb6f2c2e6cda98004f1205ac00a600b4ded1eaf61b7141f8dd77a85d82
+
+Release conformance:
+- declared_tests = 260
+- executed_tests = 260
+- required_failures = 0
+- status = PASS
+- semantic_result_digest = 2b85c23848322bde6c9258433d06ebbd4cd7fbc22a3d93a356f17aa5038e1772
+
+======================================================================
+4. SYSTEM ARCHITECTURE
+======================================================================
+
+AWKA provides:
+- the Kernel;
+- fixed Definition Registries;
+- activation control;
+- immutable Snapshots;
+- event history;
+- artifact receipts;
+- concurrency controls;
+- Capability-controlled mutation;
+- Validator execution;
+- Renderer purity boundaries.
+
+ANDY provides:
+- the procedural narrative domain model;
+- the narrative workflow;
+- the artifact lifecycle;
+- the stage prompt lifecycle;
+- Evidence Packet governance;
+- dependency eligibility rules;
+- interaction adapter routing;
+- composite operation ergonomics;
+- artifact body resolution;
+- artifact-set export;
+- activation admission report validation;
+- final export projection integrity controls;
+- rigid workflow precondition enforcement.
+
+The ANDY alpha.7 Model contains:
+- 24 entities;
+- 30 capabilities;
+- 27 primitive capabilities;
+- 3 composite capabilities;
+- 30 validators;
+- 10 renderers;
+- 8 tool bindings;
+- 42 policies/rules;
+- 11 canonical schemas;
+- 12 AWKA alpha.4 activation-publication schemas;
+- 37 canonical event definitions;
+- 1 workflow definition;
+- 15 workflow states;
+- 25 workflow transitions;
+- 1 interaction adapter contract.
+
+Domain activation creates and freezes ANDY Definition Registries. It does not
+create a workflow instance, Canonical State, Snapshot, Artifact Receipt,
+Evidence Packet, Composite Operation Run, or Export Projection QA record.
+
+A workflow is created only after an authorized user runs:
+
+Run New ANDY Workflow
+
+======================================================================
+5. ALPHA.7 RELEASE CHANGES
+======================================================================
+
+Alpha.7 preserves the alpha.5 final export projection integrity model and the
+alpha.6 multi-stage artifact-set workflow hardening, then adds the patched AWKA
+alpha.4-compatible Event Registry projection and rigid workflow conformance
+coverage.
+
+Alpha.7 adds or hardens:
+- AWKA alpha.4-compatible Event Registry Catalog projection;
+- no first-class event_registry publication during AWKA alpha.4 activation;
+- Event Registry definitions projected through schema_registry;
+- activation admission report validation;
+- kernel-compatible Capability execution tests;
+- multi-stage progression tests;
+- artifact-set export tests;
+- artifact body resolution tests;
+- capability contract specificity tests;
+- event equivalence tests;
+- snapshot integrity tests;
+- restore and reopen behavior tests;
+- semantic result digest tests;
+- rigid interaction-adapter command gating.
+
+The purpose of alpha.7 is not conversational flexibility. It is executable
+rigidity: exact workflow contracts, exact mutation routes, and fail-closed
+behavior under user pressure.
+
+======================================================================
+6. AWKA ALPHA.4 EVENT REGISTRY PROJECTION COMPATIBILITY
+======================================================================
+
+AWKA v1.0.0-alpha.4 accepts only its fixed candidate Definition Registry set
+at activation publication time.
+
+Therefore, ANDY alpha.7 must not publish a first-class event_registry during
+AWKA alpha.4 activation.
+
+Instead, ANDY alpha.7 publishes:
+
+schema_registry["ANDY.SCHEMA.EVENT_REGISTRY_CATALOG"]
+
+This catalog preserves canonical ANDY Event Registry semantics while remaining
+compatible with AWKA alpha.4. It contains all canonical ANDY event definitions
+and supports event contract resolution without extending AWKA alpha.4's fixed
+registry set.
+
+Expected activation-publication registry set:
+- entity_registry;
+- capability_registry;
+- validator_registry;
+- renderer_registry;
+- workflow_registry;
+- tool_registry;
+- schema_registry;
+- policy_registry.
+
+Activation must fail if the candidate publication set includes event_registry
+as a first-class registry under AWKA alpha.4.
+
+======================================================================
+7. ANDY WORKFLOW STRUCTURE
+======================================================================
+
+An ANDY workflow is a linear procedural narrative.
+
+The basic structure is:
+
+Narrative
+-> Stage 1
+-> Stage 2
+-> Stage 3
+-> ...
+-> Final Stage
+
+Each stage may define:
+- a unique stage ID;
+- a stage order;
+- a stage name;
+- an objective;
+- required inputs;
+- expected outputs;
+- required artifact slots;
+- optional artifact slots;
+- disallowed artifact types;
+- evidence requirements;
+- completion criteria;
+- transition rules.
+
+Alpha.7 supports rigid linear ordered narratives only. It does not support:
+- user-directed bypass of registered commands;
+- conversational stage advancement;
+- implicit artifact acceptance;
+- implicit evidence attachment;
+- branching;
+- parallel stages;
+- reusable narrative libraries;
+- multi-agent delegation;
+- production authentication infrastructure.
+
+A stage does not execute automatically. A user-provided stage prompt must be
+submitted before the stage can execute.
+
+======================================================================
+8. CORE WORKFLOW LIFECYCLE
+======================================================================
+
+The normal alpha.7 lifecycle is:
+
+1. Bootstrap AWKA.
+2. Activate ANDY.
+3. Run New ANDY Workflow.
+4. Adopt ANDY Narrative.
+5. Run a stage to review with an explicit prompt payload.
+6. Review draft artifact candidates.
+7. Accept artifact with evidence, or reject/request revision.
+8. Evaluate stage completion.
+9. Confirm stage complete.
+10. Advance from the stage.
+11. Repeat for remaining stages.
+12. Finalize workflow.
+13. Export artifact set.
+14. Validate final export projection integrity.
+15. Create Artifact Receipts and Artifact Set Receipt.
+16. Close workflow.
+
+Artifact acceptance and stage completion are separate. Accepting required
+artifacts does not automatically advance the workflow. The user must explicitly
+evaluate completion, confirm completion, and advance the stage.
+
+======================================================================
+9. DOMAIN ROLES AND AUTHORITY
+======================================================================
+
+ANDY distinguishes human authority, AI proposal, and tool execution.
+
+Common human roles:
+- andy_owner;
+- andy_operator;
+- andy_approver;
+- andy_admin.
+
+Approver roles:
+- andy_owner;
+- andy_approver.
+
+AI and tool identities may generate candidate content or technical provenance,
+but they may not approve artifacts, confirm stage completion, populate human
+approval fields, or bypass registered workflow transitions.
+
+Typical authority rules:
+- workflow creation requires an authorized human role;
+- narrative adoption requires an authorized human role;
+- stage prompt submission requires an authorized human role;
+- artifact acceptance requires an authorized approver role;
+- artifact rejection requires an authorized human role;
+- stage completion requires explicit authorized human confirmation;
+- restore and administrative reopening require owner/admin authority.
+
+Human authority is not absolute runtime authority. Even authorized users must
+operate through registered commands and legal state transitions.
+
+Vague instructions do not mutate state. Exact payload-bearing commands or
+registered workflow commands are required.
+
+======================================================================
+10. ALPHA.7 COMPOSITE CAPABILITIES
+======================================================================
+
+Alpha.7 has 27 primitive Capabilities and 3 composite Capabilities.
+
+Composite Capabilities reduce user-facing ceremony while preserving primitive
+records, primitive events, Validators, partial-failure visibility, Evidence
+Packet sequencing, dependency gates, and auditability.
+
+The three composite Capabilities are:
+
+1. ANDY.CAP.ADOPT_NARRATIVE
+
+User-facing commands:
+
+Adopt ANDY Narrative: <payload>
+
+Adopt ANDY Narrative from uploaded file: <filename>
+
+Primitive sequence:
+- ANDY.CAP.LOAD_NARRATIVE
+- ANDY.CAP.VALIDATE_NARRATIVE
+
+Commit policy:
+- all_or_none;
+- two-phase candidate validation;
+- failed validation commits no canonical narrative.
+
+2. ANDY.CAP.RUN_STAGE_TO_REVIEW
+
+User-facing commands:
+
+Run stage STG-001 with prompt: <payload>
+
+Submit and execute stage STG-001: <payload>
+
+Primitive sequence:
+- ANDY.CAP.SUBMIT_STAGE_PROMPT
+- ANDY.CAP.EXECUTE_STAGE
+- ANDY.CAP.OPEN_STAGE_REVIEW
+
+Commit policy:
+- safe_partial_commit;
+- prompt commit is durable if later execution or review opening fails;
+- failed primitive step must be recorded.
+
+3. ANDY.CAP.ACCEPT_ARTIFACT_WITH_EVIDENCE
+
+User-facing command:
+
+Accept artifact with evidence for slot SLOT-001 in stage STG-001: artifact_ref=<ref> evidence_source=<source> acceptance=<statement>
+
+Primitive sequence:
+- ANDY.CAP.REGISTER_ARTIFACT
+- ANDY.CAP.ACCEPT_ARTIFACT
+- ANDY.CAP.ATTACH_EVIDENCE_PACKET
+- ANDY.CAP.PROMOTE_ARTIFACT_DEPENDENCY_ELIGIBLE
+
+Commit policy:
+- safe_partial_commit;
+- successful prior steps are preserved;
+- dependency_eligible must remain false until all required primitive steps
+  succeed.
+
+======================================================================
+11. NARRATIVE DEFINITIONS
+======================================================================
+
+A narrative definition is the user-provided procedural plan for the workflow.
+It may be supplied as:
+- pasted text;
+- an uploaded file;
+- a hybrid of upload plus clarifying text.
+
+A narrative definition may describe:
+- workflow objective;
+- ordered stages;
+- expected outputs;
+- required artifacts;
+- optional artifacts;
+- disallowed artifacts;
+- completion criteria;
+- transition rules.
+
+Alpha.7 preferred command:
+
+Adopt ANDY Narrative: <payload>
+
+or:
+
+Adopt ANDY Narrative from uploaded file: <filename>
+
+Narrative text may not redefine AWKA, ANDY, authority rules, validators,
+policies, artifact requirements, runtime behavior, or safety boundaries.
+
+======================================================================
+12. STAGE PROMPTS
+======================================================================
+
+Each stage requires a user-provided stage prompt before execution.
+
+Preferred alpha.7 command:
+
+Run stage STG-001 with prompt: <payload>
+
+Example:
+
+Run stage STG-001 with prompt: Research abstract kernels, including conceptual foundations, architecture families, abstraction boundaries, verification concerns, and AI orchestration analogues. Produce an evidence-backed report suitable for final export.
+
+The composite command submits the prompt, executes the stage, and opens review.
+Internally, it still records the primitive sequence.
+
+Stage prompts are versioned. Only one prompt version may be active for a stage
+at a time. Older prompt versions remain audit-visible but inactive.
+
+Prompt versions should record:
+- stage_prompt_version_id;
+- stage_id;
+- prompt_version_number;
+- prompt_digest;
+- prompt_status;
+- active_for_generation flag;
+- adapter route evidence.
+
+Stage execution is blocked if no active prompt version exists.
+
+======================================================================
+13. INTERACTION ADAPTER GOVERNANCE
+======================================================================
+
+The interaction adapter routes user messages to registered ANDY Capabilities.
+It is not an independent authority and may not mutate state directly.
+
+When ANDY is active, the adapter must preflight the current state before it
+routes a mutating command.
+
+Vague messages do not mutate state. Examples:
+- Looks good.
+- Approved.
+- Continue.
+- Next.
+- Use that.
+- Accept.
+- Reject that.
+- Fix it.
+
+These messages may trigger clarification or presentation, but they must not:
+- commit a prompt;
+- accept an artifact;
+- reject an artifact;
+- attach evidence;
+- promote dependency eligibility;
+- confirm stage completion;
+- advance a stage;
+- finalize or close a workflow.
+
+Macro commands mutate only when explicitly payload-bearing and targeted at the
+correct current stage. If a user issues a command out of sequence, ANDY must
+block the command and return the next registered workflow command.
+
+======================================================================
+14. ARTIFACTS AND ARTIFACT SLOTS
+======================================================================
+
+Artifacts are the primary mechanism for workflow progression.
+
+Examples include:
+- requirements documents;
+- specifications;
+- architecture documents;
+- diagrams;
+- research summaries;
+- implementation plans;
+- generated documents;
+- verification reports;
+- decision records;
+- final deliverable sets.
+
+A stage may declare required and optional artifact slots. A stage is complete
+only when required artifact slots are satisfied by accepted_dependency_eligible
+artifact versions and the user explicitly confirms the stage complete.
+
+Artifact version statuses include:
+- draft;
+- registered;
+- revision_requested;
+- accepted_pending_evidence;
+- accepted_dependency_eligible;
+- rejected;
+- disallowed;
+- superseded;
+- inactive;
+- archived;
+- restored_as_new_version;
+- nongoverned_out_of_band.
+
+Important distinction:
+- accepted_pending_evidence is accepted but not dependency-eligible;
+- accepted_dependency_eligible is accepted, evidence-linked, promoted, and may
+  satisfy required slots or active context dependencies.
+
+======================================================================
+15. DRAFT, ACCEPTED, REJECTED, AND DISALLOWED ARTIFACTS
+======================================================================
+
+Draft artifacts are review candidates. They are not active procedural context
+and cannot satisfy dependencies.
+
+Registered artifacts are known to ANDY but are not automatically accepted.
+
+Accepted-pending-evidence artifacts have human acceptance but are not yet
+dependency-eligible.
+
+Accepted-dependency-eligible artifacts have completed acceptance, Evidence
+Packet attachment, and dependency promotion.
+
+Rejected artifacts remain preserved for audit and retrieval. They cannot
+satisfy dependencies and cannot participate in active narrative context.
+
+Disallowed artifacts are blocked at generation when detectable and always
+blocked at acceptance. Attempts to generate or accept disallowed artifacts must
+fail closed.
+
+Out-of-band files are files created outside the registered ANDY artifact flow.
+They are not active procedural context and are not dependency-eligible. If a
+user explicitly requests a non-governed file while ANDY is active, the response
+must state that the file is non-governed unless it is registered through ANDY's
+artifact flow.
+
+======================================================================
+16. EVIDENCE PACKETS
+======================================================================
+
+An Evidence Packet preserves the provenance and validation history of an
+accepted artifact.
+
+An Evidence Packet may include:
+- evidence_packet_id;
+- accepted_artifact_id;
+- artifact_version_id;
+- validation_status;
+- dependency_eligibility_result;
+- source_inputs;
+- approval_statement;
+- artifact_ref;
+- artifact_digest.
+
+Accepted artifacts should not be used downstream without Evidence Packet
+linkage and dependency-eligibility promotion.
+
+Operator rule for alpha.7:
+- do not use placeholder evidence values;
+- do not use <source list> as evidence_source;
+- do not use <acceptance statement> as acceptance;
+- evidence_source should identify concrete sources, source anchors, file names,
+  digest references, or other auditable provenance;
+- acceptance should be a meaningful human approval statement.
+
+The first alpha.7 workflow demonstrated lifecycle mechanics, but evidence
+placeholders should be treated as unacceptable operating practice for serious
+runs. Future hardening should reject placeholder evidence values automatically.
+
+======================================================================
+17. ARTIFACT ACCEPTANCE WITH EVIDENCE
+======================================================================
+
+Preferred alpha.7 command:
+
+Accept artifact with evidence for slot SLOT-001 in stage STG-001: artifact_ref=<ref> evidence_source=<source> acceptance=<statement>
+
+Example:
+
+Accept artifact with evidence for slot SLOT-001 in stage STG-001: artifact_ref=ANDY_Draft_Report.pdf evidence_source=web sources S1-S7 cited in the report and rendered artifact SHA-256 <digest> acceptance=I accept this report as the research artifact for SLOT-001.
+
+Rules:
+- acceptance requires an authorized approver;
+- evidence_source must not be blank;
+- evidence_source should not be a placeholder;
+- acceptance must not be blank;
+- acceptance should not be a placeholder;
+- artifact_ref must identify the artifact candidate;
+- dependency_eligible must remain false until registration, acceptance,
+  Evidence Packet attachment, and promotion all succeed;
+- rejected or disallowed artifacts cannot be promoted.
+
+======================================================================
+18. STAGE COMPLETION AND ADVANCEMENT
+======================================================================
+
+A stage can complete only when:
+- a valid active stage prompt version exists;
+- all required artifact slots are satisfied by accepted_dependency_eligible
+  artifact versions;
+- optional artifacts are accepted, rejected, or explicitly deferred;
+- disallowed artifacts are blocked or rejected;
+- each accepted artifact has an Evidence Packet;
+- rejection history is preserved for rejected artifacts;
+- inactive artifacts are excluded from active context;
+- an authorized user explicitly confirms stage completion.
+
+Evaluate stage completion:
+
+Evaluate stage completion for STG-001
+
+Confirm stage completion:
+
+Confirm stage complete for STG-001
+
+Advance from the stage:
+
+Advance stage STG-001
+
+Alpha.7 invariant:
+
+stage_status = stage_advanced implies review_status = closed
+
+Stage completion and advancement are separate operations. ANDY must not infer
+stage completion from artifact acceptance alone.
+
+======================================================================
+19. ACTIVE NARRATIVE CONTEXT
+======================================================================
+
+Active narrative context is reconstructed exclusively from:
+- accepted_dependency_eligible artifact versions;
+- Evidence Packets;
+- workflow metadata;
+- completed stages;
+- current stage;
+- pending stages;
+- dependency graph;
+- procedural state.
+
+Active narrative context excludes:
+- conversation history unless captured through a registered Capability;
+- model output that has not been registered, accepted, evidenced, and promoted;
+- tool output that has not been admitted through governance;
+- draft artifacts;
+- registered-only artifacts;
+- accepted_pending_evidence artifacts;
+- rejected artifacts;
+- disallowed artifacts;
+- superseded artifacts;
+- inactive artifacts;
+- nongoverned out-of-band files.
+
+Read-only command:
+
+Show Active Narrative Context
+
+======================================================================
+20. VALIDATION
+======================================================================
+
+ANDY alpha.7 validation checks include:
+- actor authority;
+- narrative structure;
+- current stage state;
+- stage prompt existence and versioning;
+- interaction-adapter routing;
+- artifact registration;
+- disallowed artifact blocking;
+- rejection history;
+- feedback validity;
+- explicit artifact acceptance;
+- Evidence Packet linkage;
+- dependency eligibility;
+- draft and rejected artifact isolation;
+- context reconstruction;
+- workflow transition legality;
+- Snapshot integrity;
+- presentation boundaries;
+- final export projection integrity;
+- Artifact Receipt digest clarity;
+- artifact body resolution;
+- artifact-set export readiness;
+- runtime state serialization consistency;
+- activation admission report validation;
+- AWKA alpha.4 registry publication compatibility.
+
+Validation does not silently repair workflow facts. If validation fails, ANDY
+must leave the prior active state unchanged unless a composite operation's
+explicit safe partial commit policy preserves prior successful primitive steps.
+
+======================================================================
+21. FINAL ARTIFACT-SET EXPORT PROJECTION INTEGRITY
+======================================================================
+
+ANDY exports are controlled projections from immutable Snapshots.
+
+Export the final artifact set:
+
+Export artifact set
+
+Available Renderers include:
+- ANDY.RENDER.STAGE_REVIEW;
+- ANDY.RENDER.ARTIFACT_REGISTRY;
+- ANDY.RENDER.ARTIFACT_VERSION_HISTORY;
+- ANDY.RENDER.REJECTION_HISTORY;
+- ANDY.RENDER.EVIDENCE_PACKET;
+- ANDY.RENDER.NARRATIVE_CONTEXT;
+- ANDY.RENDER.FINAL_ARTIFACT_SET;
+- ANDY.RENDER.AUDIT_DIAGNOSTIC;
+- ANDY.RENDER.JSON_EXPORT.
+
+Renderers must be pure. They may not mutate Canonical State, promote artifacts,
+attach Evidence Packets, infer missing facts, or determine completion.
+
+Alpha.7 final export rule:
+
+A final exported artifact set must project final accepted, evidenced,
+dependency-eligible, exported status. It must not copy stale draft lifecycle
+labels into the final artifact set.
+
+The final exported artifact set must include visible lineage fields:
+- Workflow Instance;
+- Artifact Set;
+- Artifact Version;
+- Accepted Artifact;
+- Evidence Packet;
+- Artifact Receipt;
+- Artifact Status;
+- Export Status;
+- Renderer;
+- Package Digest.
+
+The final exported artifact must not contain stale draft-status language from
+draft candidates.
+
+If forbidden phrase detection fails, export must fail closed and must not create
+a success Artifact Receipt or Artifact Set Receipt.
+
+======================================================================
+22. ARTIFACT RECEIPTS AND ARTIFACT SET RECEIPTS
+======================================================================
+
+An Artifact Receipt attests a controlled member export.
+
+An Artifact Set Receipt attests the aggregate export package.
+
+Alpha.7 Artifact Receipt required fields include:
+- artifact_receipt_id;
+- workflow_instance_id;
+- selected_snapshot_id;
+- selected_snapshot_digest;
+- artifact_name_or_reference;
+- source_artifact_reference;
+- source_artifact_digest;
+- source_artifact_status_at_export;
+- artifact_version_id;
+- accepted_artifact_id;
+- evidence_packet_id;
+- exported_artifact_digest;
+- final_projection_digest;
+- final_projection_status;
+- export_projection_qa_result;
+- renderer_id;
+- renderer_version;
+- selected_workflow_version;
+- active_version_at_request;
+- export_format;
+- validation_or_QA_result;
+- operation_status;
+- export_status;
+- export_timestamp.
+
+Alpha.7 Artifact Set Receipt required fields include:
+- artifact_set_receipt_id;
+- artifact_set_id;
+- workflow_instance_id;
+- selected_snapshot_id;
+- selected_snapshot_digest;
+- ordered_member_manifest_digest;
+- package_digest;
+- renderer_id;
+- renderer_version;
+- member_receipt_ids;
+- operation_status;
+- export_status;
+- export_timestamp.
+
+A final artifact reference alone is not a substitute for the post-hash Artifact
+Receipt and Artifact Set Receipt.
+
+Rendering failure or final projection QA failure must not create a success
+receipt.
+
+Source artifact digest, final projection digest, exported artifact digest, and
+package digest are intentionally distinct. If a field represents a projection
+digest rather than a canonical snapshot digest, the field name and QA record
+should make that distinction explicit.
+
+======================================================================
+23. RUNTIME STATE SERIALIZATION
+======================================================================
+
+Alpha.7 requires runtime state serialization consistency.
+
+Final serialized runtime state must satisfy:
+- snapshot.active_version == canonical_state.active_version;
+- snapshot.current_state == canonical_state.current_state;
+- CLOSED workflow has no next registered workflow command;
+- stage_status = stage_advanced implies review_status = closed;
+- finalized or exported workflow has a finalization record;
+- closed workflow has a closure record;
+- exported or closed workflow has Artifact Receipts and an Artifact Set Receipt;
+- artifact body resolution records exist for exported artifact members;
+- export projection QA result exists and is PASS for successful exports.
+
+======================================================================
+24. VERSION, STATE, EVENT, AND AUDIT COMMANDS
+======================================================================
+
+Useful read-only commands include:
+
+Show Current ANDY Stage
+Show Active Narrative Context
+Show Draft Artifact History
+Show Rejection History
+Show Evidence Packets
+Show artifacts for stage STG-001
+Show accepted artifacts for stage STG-001
+Show rejected artifacts for stage STG-001
+Show prompt history for stage STG-001
+Show active prompt for stage STG-001
+Show completion status for stage STG-001
+
+Read-only commands do not change Canonical State.
+
+======================================================================
+25. RESTORE AND REOPEN
+======================================================================
+
+ANDY uses restore-as-new-version behavior.
+
+Restore a historical Snapshot as a new successor version:
+
+Restore snapshot SNAP-001 as new version
+
+Reopen a prior stage as a new version:
+
+Reopen stage STG-001 as new version
+
+Restoration never overwrites history. The historical Snapshot remains
+unchanged, and ANDY creates a new active version derived from it.
+
+======================================================================
+26. CLOSE THE WORKFLOW
+======================================================================
+
+After the final artifact set is exported and all workflow requirements are
+complete, close the workflow:
+
+Close workflow
+
+Closure requires:
+- workflow finalization;
+- accepted artifact set readiness;
+- export eligibility if export is required;
+- valid Artifact Receipt and Artifact Set Receipt for final controlled exports;
+- no unresolved blocking dependencies;
+- authorized closer.
+
+If closure requirements are incomplete, the workflow remains open.
+
+======================================================================
+27. STANDARD COMMAND REFERENCE
+======================================================================
+
+Activation and workflow start:
+
+Run New ANDY Workflow
+
+Narrative adoption:
+
+Adopt ANDY Narrative: <payload>
+Adopt ANDY Narrative from uploaded file: <filename>
+
+Stage execution:
+
+Run stage STG-001 with prompt: <payload>
+Submit and execute stage STG-001: <payload>
+
+Artifact acceptance with evidence:
+
+Accept artifact with evidence for slot SLOT-001 in stage STG-001: artifact_ref=<ref> evidence_source=<source> acceptance=<statement>
+
+Stage completion:
+
+Evaluate stage completion for STG-001
+Confirm stage complete for STG-001
+Advance stage STG-001
+
+Finalization/export/closure:
+
+Finalize workflow
+Export artifact set
+Close workflow
+
+Read-only examples:
+
+Show Current ANDY Stage
+Show Active Narrative Context
+Show Draft Artifact History
+Show Rejection History
+Show Evidence Packets
+Show completion status for stage STG-001
+
+Restore/reopen:
+
+Reopen stage STG-001 as new version
+Restore snapshot SNAP-001 as new version
+
+Replace IDs with the exact IDs returned by ANDY.
+
+======================================================================
+28. RECOMMENDED OPERATING SEQUENCE
+======================================================================
+
+1. Confirm AWKA is bootstrapped and READY.
+2. Activate ANDY successfully using the alpha.7 install prompt.
+3. Run New ANDY Workflow.
+4. Adopt the ANDY Narrative using pasted text or uploaded file.
+5. Run the current stage with an exact payload-bearing prompt.
+6. Review generated draft artifacts.
+7. Attempt incomplete or shorthand commands only if intentionally testing
+   fail-closed behavior.
+8. Accept the artifact with explicit evidence and acceptance statement.
+9. Verify the artifact becomes accepted_dependency_eligible.
+10. Evaluate stage completion.
+11. Confirm stage complete.
+12. Advance from the stage.
+13. Repeat for remaining stages.
+14. Finalize workflow.
+15. Export artifact set.
+16. Confirm final export contains no draft-status leakage.
+17. Verify source_artifact_digest and exported_artifact_digest are both present
+    in the Artifact Receipts.
+18. Verify Artifact Set Receipt package_digest is present.
+19. Verify export_projection_qa_result = PASS.
+20. Close workflow.
+21. Preserve final state, receipts, exported artifacts, transcript, and any
+    verification outputs.
+
+======================================================================
+29. INTERNAL TEAM TESTING SCRIPT
+======================================================================
+
+Use this script for a minimal alpha.7 rigid workflow test:
+
+1. Activate AWKA.
+2. Activate ANDY alpha.7.
+3. Run New ANDY Workflow
+4. Adopt ANDY Narrative: Research about abstract kernels. Provide research in a final exportable report.
+5. Try the incomplete command and confirm it does not mutate:
+   Run stage STG-001
+6. Run the corrected command:
+   Run stage STG-001 with prompt: Research abstract kernels, including conceptual foundations, kernel architectures, abstraction boundaries, execution models, verification concerns, and examples across operating systems, workflow kernels, and AI orchestration kernels. Produce an evidence-backed report suitable for final export.
+7. Try shorthand acceptance and confirm it does not mutate:
+   Accept
+8. Run the corrected acceptance command:
+   Accept artifact with evidence for slot SLOT-001 in stage STG-001: artifact_ref=<artifact> evidence_source=<specific sources and digest> acceptance=<explicit acceptance statement>
+9. Evaluate stage completion for STG-001
+10. Try to advance before confirmation and confirm it blocks if state is only STAGE_COMPLETION_PENDING.
+11. Confirm stage complete for STG-001
+12. Advance stage STG-001
+13. Repeat for all stages.
+14. Finalize workflow
+15. Export artifact set
+16. Verify final export projection has no draft-status leakage.
+17. Verify Artifact Receipts and Artifact Set Receipt digest fields.
+18. Close workflow
+
+Expected result:
+- invalid shorthand and incomplete commands do not mutate;
+- premature advancement is blocked by precondition;
+- workflow closes successfully;
+- final export contains final lifecycle banner;
+- final export does not leak draft-status labels;
+- Artifact Receipts contain source and exported digests;
+- Artifact Set Receipt contains package digest;
+- serialized runtime state is internally consistent.
+
+======================================================================
+30. COMMON ERRORS AND CORRECTIONS
+======================================================================
+
+ERROR: ANDY activation fails because component hashes are pending.
+CORRECTION: Replace the preliminary Manifest with the finalized Manifest that
+contains exact lowercase SHA-256 hashes and digest_status = verified.
+
+ERROR: ANDY activation fails because event_registry is published as a first-class registry.
+CORRECTION: Use the patched alpha.7 reissue. Under AWKA alpha.4, Event Registry
+definitions must be published through ANDY.SCHEMA.EVENT_REGISTRY_CATALOG inside
+schema_registry.
+
+ERROR: User provides a stage prompt informally, but no prompt version is
+created.
+CORRECTION: Use the exact payload-bearing command:
+Run stage STG-001 with prompt: <payload>
+
+ERROR: A vague message is entered while ANDY is waiting for an exact command.
+CORRECTION: Use the registered command with explicit payload. Vague messages do
+not mutate.
+
+ERROR: User enters Accept and expects artifact acceptance.
+CORRECTION: Use the registered acceptance command with slot, stage,
+artifact_ref, evidence_source, and acceptance fields.
+
+ERROR: User tries to advance immediately after evaluation.
+CORRECTION: Confirm stage completion first. Run:
+Confirm stage complete for STG-001
+Advance stage STG-001
+
+ERROR: A draft artifact is used as downstream context.
+CORRECTION: Register, accept, attach Evidence Packet, and promote the artifact
+to accepted_dependency_eligible.
+
+ERROR: An artifact is accepted but still not dependency-eligible.
+CORRECTION: Attach valid evidence and run the dependency-eligibility promotion
+through the registered acceptance-with-evidence flow.
+
+ERROR: Evidence uses placeholders such as <source list> or <acceptance statement>.
+CORRECTION: Replace placeholders with concrete source references and a real
+acceptance statement before treating the run as serious evidence-backed work.
+
+ERROR: A rejected artifact reappears as if it were usable.
+CORRECTION: Review rejection history. Rejected artifacts cannot satisfy
+dependencies.
+
+ERROR: Final export exists but no Artifact Receipt or Artifact Set Receipt is available.
+CORRECTION: Regenerate through ANDY.CAP.EXPORT_ARTIFACT_SET, hash the final
+artifact set, validate final projection QA, and create post-hash receipts.
+
+ERROR: selected_snapshot_digest is ambiguous in an export receipt.
+CORRECTION: Distinguish canonical snapshot digest from projection or receipt
+digest. Treat ambiguous digest lineage as an inspection concern until fields are
+clarified.
+
+======================================================================
+31. FAIL-CLOSED EXPECTATIONS
+======================================================================
+
+ANDY fails closed. When a required check fails, it must not:
+- guess missing workflow facts;
+- silently repair artifacts;
+- treat conversation history as Canonical State;
+- treat AI output as accepted artifact content;
+- treat tool output as authoritative;
+- use draft artifacts as dependencies;
+- use registered-only artifacts as dependencies;
+- use accepted_pending_evidence artifacts as dependencies;
+- use rejected artifacts as dependencies;
+- use disallowed artifacts as dependencies;
+- create governed artifacts outside registered artifact flow;
+- accept vague approval commands;
+- accept shorthand commands as mutating commands;
+- infer stage completion;
+- infer stage advancement;
+- bypass registered Capabilities;
+- bypass Validators;
+- let Renderers mutate Canonical State;
+- publish partial Definition Registries;
+- publish event_registry as a first-class AWKA alpha.4 registry;
+- commit a failed mutation except where a declared safe partial commit policy
+  preserves prior successful primitive steps;
+- claim a successful final export without final projection QA;
+- claim a successful final export without receipts;
+- create a Workflow Instance during Domain activation;
+- create a Workflow Instance after failed Domain activation.
+
+The system reports the component, failed check, defect, and required correction.
+
+======================================================================
+32. QUICK OPERATOR CHECKLIST
+======================================================================
+
+Before activating ANDY:
+[ ] AWKA Kernel v1.0.0-alpha.4 is READY.
+[ ] ANDY release files are exact alpha.7 filenames.
+[ ] No duplicate-download suffixes are present.
+[ ] Manifest component hashes are verified.
+[ ] Verification Suite passes 260/260 tests.
+[ ] Event Registry Catalog projection is present in schema_registry.
+[ ] event_registry is not published as a first-class AWKA alpha.4 registry.
+[ ] Final export projection tests pass.
+[ ] Artifact body resolution tests pass.
+[ ] Runtime state serialization tests pass.
+[ ] Receipt digest clarity tests pass or known digest ambiguities are documented.
+
+Before creating a workflow:
+[ ] ANDY Domain Runtime is active.
+[ ] No Workflow Instance was created during activation.
+[ ] The user is authorized to create a workflow.
+
+Before adopting a narrative:
+[ ] Narrative source is user-provided text, upload, or hybrid input.
+[ ] Narrative is linear for alpha.7.
+[ ] Required and disallowed artifact expectations are clear enough to validate.
+
+Before running a stage:
+[ ] Current stage ID is known.
+[ ] Prompt is explicit and payload-bearing.
+[ ] Required dependencies from prior stages are accepted_dependency_eligible
+    artifacts only.
+
+Before accepting an artifact:
+[ ] Artifact reference is known.
+[ ] Artifact slot ID is known.
+[ ] Artifact is not disallowed.
+[ ] Evidence source is explicit, concrete, and non-empty.
+[ ] Evidence source is not a placeholder.
+[ ] Acceptance statement is explicit, meaningful, and non-empty.
+[ ] Acceptance statement is not a placeholder.
+[ ] Approver is an authorized human actor.
+
+Before confirming a stage complete:
+[ ] All required artifact slots are satisfied.
+[ ] Optional artifacts are accepted, rejected, or deferred.
+[ ] Disallowed artifacts are blocked or rejected.
+[ ] Evidence Packets exist for accepted artifacts.
+[ ] Accepted artifacts are accepted_dependency_eligible.
+[ ] Draft, rejected, disallowed, and out-of-band artifacts are excluded from
+    active context.
+[ ] User explicitly confirms stage completion.
+
+Before final export:
+[ ] Workflow is FINAL_EXPORT_READY.
+[ ] Selected Snapshot is immutable.
+[ ] Renderer is pure.
+[ ] Final artifact set includes accepted_dependency_eligible artifacts only.
+[ ] Final export projection QA will run.
+[ ] Final export must not contain draft-status leakage.
+[ ] Artifact Receipts and Artifact Set Receipt will be created after hashing.
+
+Before closure:
+[ ] Final artifact set is exported if required.
+[ ] Artifact Receipts exist.
+[ ] Artifact Set Receipt exists.
+[ ] Export Projection QA result is PASS.
+[ ] No blocking dependencies remain.
+[ ] Authorized closer confirms closure.
+
+======================================================================
+33. FINAL ALPHA.7 SUCCESS SIGNAL
+======================================================================
+
+A successful patched alpha.7 activation response should report:
+
+ANDY Domain Runtime v1.0.0-alpha.7 activated on AWKA v1.0.0-alpha.4. Executable conformance: 260/260 PASS. Rigid governance workflow enabled. Event Registry Catalog projection active for AWKA alpha.4 compatibility. Awaiting workflow command: Run New ANDY Workflow.
+
+======================================================================
+END OF GUIDE

@@ -1,0 +1,354 @@
+ANDY Final Export
+Workflow Instance: ANDY-WF-000001
+Artifact Set: ARTSET-ANDY-WF-000001-001
+Artifact Receipt: RCPT-ANDY-WF-000001-ARTSET-0001
+Artifact Status: accepted_dependency_eligible
+Export Status: EXPORTED
+Renderer: ANDY.RENDER.FINAL_ARTIFACT_SET
+
+Lifecycle Projection:
+- Projection method: structured_lifecycle_metadata_projection
+- Global body rewrite: false
+
+Artifact Set Members:
+- Artifact Version: ARTV-STG-001-SCOPE-BRIEF-001
+  Accepted Artifact: ACC-ARTV-STG-001-SCOPE-BRIEF-001
+  Evidence Packet: EVD-STG-001-SCOPE-BRIEF-001
+  Artifact Body Projection:
+  Research Scope Brief - Abstract Kernels
+Working definition:
+An abstract kernel is a minimal trusted governance core that owns boundary enforcement, admissible mutation paths, and validity criteria for a larger system, while intentionally excluding domain-specific or application-specific behavior. A kernel in this research sense is not defined only by proximity to hardware. It is defined by architectural role: it arbitrates privileged operations, preserves invariants, exposes controlled extension points, and keeps untrusted or variable behavior outside the trusted core.
+In-scope comparison traditions:
+1. Operating system kernels and microkernels: kernels provide protection boundaries, mediate access to privileged hardware operations, allocate resources, and isolate untrusted programs. Microkernel work further emphasizes minimal mechanism, capability-oriented access control, and movement of drivers or services outside the trusted core.
+2. Proof kernels and LCF-style theorem provers: a small trusted kernel defines valid inference, while tactics and automation may remain outside the trusted base as long as produced theorems pass through kernel rules.
+3. Verified kernels: systems such as seL4 demonstrate a kernel whose implementation is proven against an abstract specification, making the specification-to-implementation refinement chain part of the kernel assurance story.
+4. Language and runtime kernels: these include interpreters, virtual machines, schedulers, type checkers, and evaluators that define the admissible execution semantics for programs or components while libraries provide domain behavior.
+5. Orchestration and workflow kernels: these govern state transitions, capability invocation, validation ordering, retries, idempotency, and event history without owning the business semantics of a particular workflow.
+6. LLM governance kernels: these separate conversational surface behavior from authority, state, evidence, validation, activation, and rendering, allowing prompt-level interaction to request operations without becoming the source of operational truth.
+Boundary distinctions:
+- Kernel versus runtime: a kernel owns invariant-preserving control paths; a runtime may execute behavior within the rules and services the kernel provides.
+- Kernel versus framework: a framework supplies reusable structure and conventions; a kernel enforces authority boundaries and permitted mutations.
+- Kernel versus engine: an engine performs an operational function such as rendering, inference, search, scheduling, or simulation; a kernel governs whether and how that engine may affect state.
+- Kernel versus orchestrator: an orchestrator sequences tasks; a kernel additionally defines the trusted state model, validation regime, concurrency discipline, and mutation authority.
+- Kernel versus application: an application expresses domain intent and user-facing behavior; a kernel should remain reusable across applications by excluding domain nouns, business rules, and presentation semantics.
+Scope rule for this research:
+A system qualifies as an abstract kernel when it satisfies at least four architectural criteria: a small privileged core, explicit authority boundary, controlled extension or registration surface, invariant-preserving mutation path, auditable state or proof artifacts, and a distinction between trusted governance and untrusted or domain-specific behavior.
+Research deliverable for STG-001:
+The next stages should compare traditions by the same analytic dimensions: trusted core size, authority boundary, extension model, state authority, verification method, failure behavior, and relationship between kernel-defined mechanism and domain-supplied policy.
+Preliminary source anchors:
+- Operating system kernel abstraction: OS kernels are trusted to arbitrate between untrusted applications/users and hardware, with protection serving reliability, security, privacy, and resource allocation.
+- seL4 verified microkernel: seL4 is presented as a small L4-family microkernel with machine-checked proof against an abstract specification, where drivers and services can live outside the kernel.
+- LCF tradition: proof systems use a small trusted kernel for valid inference, while tactics and automation must ultimately route theorem construction through that trusted core.
+- Artifact Version: ARTV-STG-002-TAXONOMY-001
+  Accepted Artifact: ACC-ARTV-STG-002-TAXONOMY-001
+  Evidence Packet: EVD-STG-002-TAXONOMY-001
+  Artifact Body Projection:
+  Abstract Kernel Taxonomy and Lineage Map
+Taxonomy thesis:
+Abstract kernels are best compared as governance cores rather than as artifacts of one technology family. Their lineage splits into hardware-proximate kernels, formal-proof kernels, semantic-execution kernels, distributed-workflow kernels, and AI governance kernels. The common pattern is a small authority-bearing core that preserves invariants while delegating domain or policy variation to external layers.
+Classification axis 1 - Trusted core size:
+1. Monolithic OS kernels: large trusted base; many services, drivers, and policies may execute with privileged authority.
+2. Microkernels and separation kernels: deliberately small trusted base; only mechanisms that cannot be moved outside the kernel remain privileged.
+3. Proof kernels: extremely small trusted inference base; tactics and automation are outside the trusted core and must route theorem construction through primitive inference rules.
+4. Verified kernels: small or constrained kernel plus machine-checked correspondence between implementation and abstract specification.
+5. Language/runtime kernels: medium trusted base; execution semantics, type discipline, memory management, scheduling, or bytecode validation may be centralized.
+6. Workflow and orchestration kernels: variable trusted base; the core usually owns durable state, event history, retries, validation order, and transition governance.
+7. LLM governance kernels: emerging trusted base; the kernel owns authority, evidence, state mutation, activation, and rendering boundaries while model output remains a candidate or data source.
+Classification axis 2 - Authority boundary:
+- OS kernels arbitrate between untrusted applications/users and privileged hardware.
+- Microkernels push most services to user space and preserve a narrow kernel/user boundary.
+- Proof kernels separate trusted inference constructors from untrusted proof search.
+- Verified kernels add a specification/implementation boundary and prove refinement across it.
+- Runtime kernels define valid program execution and managed object behavior.
+- Workflow kernels define valid state transitions and durable process history.
+- LLM governance kernels separate requests, source text, tool output, and model candidates from operational authority.
+Classification axis 3 - Extension model:
+- Monolithic kernels extend through privileged modules, drivers, or compiled-in services.
+- Microkernels extend through user-space servers communicating via IPC or capabilities.
+- Proof kernels extend through tactics, libraries, and derived rules that ultimately call the trusted kernel.
+- Runtime kernels extend through libraries, managed assemblies, packages, plugins, or bytecode modules.
+- Workflow kernels extend through registered capabilities, validators, activities, workers, schemas, and policies.
+- LLM governance kernels extend through domain runtime definitions, tool contracts, evidence packets, renderers, and activation-verified registries.
+Classification axis 4 - State authority:
+- OS kernels treat process, memory, file, device, and scheduler state as privileged or kernel-mediated resources.
+- Microkernels minimize the state held by the kernel but keep critical scheduling, address-space, IPC, and capability state authoritative.
+- Proof kernels treat theorem objects and inference validity as authoritative state.
+- Runtime kernels treat managed heap, metadata, call frames, type identity, or bytecode state as authoritative execution state.
+- Workflow kernels treat canonical workflow state, event history, timers, retries, and snapshots as authoritative process state.
+- LLM governance kernels treat canonical state, admitted evidence, audit events, registries, and snapshots as authoritative, while conversation remains non-authoritative.
+Classification axis 5 - Verification method:
+- OS kernels rely on testing, static analysis, code review, and sometimes formal verification.
+- Microkernels invite stronger assurance because small cores reduce verification surface and fault domains.
+- Proof kernels rely on a small trusted code base whose correctness guards all derived automation.
+- Verified kernels use machine-checked proofs against abstract specifications.
+- Runtime kernels use conformance suites, type-system proofs, memory-safety properties, VM verification, and implementation testing.
+- Workflow kernels use executable conformance, event/log replay, deterministic state transition tests, idempotency tests, and failure atomicity tests.
+- LLM governance kernels use executable bootstrap, activation gates, domain conformance suites, source-as-data rules, and proof of non-mutation outside capabilities.
+Lineage map:
+A. Hardware authority lineage: monolithic kernel -> microkernel -> separation kernel -> formally verified microkernel.
+B. Logical authority lineage: LCF trusted inference kernel -> HOL/Isabelle-style proof discipline -> proof-producing automation.
+C. Semantic execution lineage: interpreter/evaluator -> VM/runtime -> managed execution environment -> language-neutral runtime services.
+D. Distributed process lineage: scheduler -> DAG engine -> durable workflow engine -> stateful orchestration kernel.
+E. LLM governance lineage: prompt conventions -> reusable custom instructions -> governed domain runtimes -> abstract workflow kernel architecture.
+Comparative insight:
+The strongest abstract-kernel designs have two separations at once: mechanism is separated from policy, and authority is separated from expression. Mechanism/policy separation prevents domain concerns from inflating the kernel. Authority/expression separation prevents user text, source content, generated artifacts, or helper automation from becoming operational truth without validation.
+Implications for AWKA:
+AWKA aligns most closely with workflow/orchestration kernels and proof-kernel discipline. Like workflow kernels, it centers canonical state, event history, snapshots, validation-before-mutation, and durable transitions. Like proof kernels, it routes all valid state construction through a constrained trusted core. Like microkernels, it refuses domain semantics in the kernel and publishes domain behavior through activated definitions. The next research stage should analyze which invariants recur across those traditions and which are unique to LLM-governed workflows.
+Preliminary source anchors:
+- OS kernel abstraction: kernels are trusted to arbitrate between untrusted applications/users and hardware, supporting protection, reliability, security, privacy, and resource allocation.
+- Microkernel principle: microkernels keep only minimal mechanisms in kernel mode while policy-heavy services run in user space; this represents mechanism/policy separation.
+- LCF proof-kernel architecture: complex proof procedures must reduce to basic inferences checked by a small trusted kernel.
+- seL4 verified kernel: formal verification connects an abstract specification to the C implementation through machine-checked proof.
+- Language runtime example: .NET CLR provides managed execution services such as metadata-based loading, type/runtime services, security, garbage collection, exception handling, and cross-language integration.
+- Workflow engine example: Cadence presents durable, stateful long-running workflows with event-history replay, retries, timers, and state recovery.
+- Artifact Version: ARTV-STG-003-INVARIANTS-001
+  Accepted Artifact: ACC-ARTV-STG-003-INVARIANTS-001
+  Evidence Packet: EVD-STG-003-INVARIANTS-001
+  Artifact Body Projection:
+  Architectural Invariants and Contracts Across Abstract Kernel Traditions
+Thesis:
+Abstract kernels recur when a system needs a small authority-bearing core that can define what may change, who may request change, how validity is proven, and how history is preserved. The recurring architectural invariants are less about implementation language or platform and more about governed boundaries: authority is centralized, mutation is mediated, extensions are constrained, and failures preserve prior truth.
+Invariant 1 - explicit authority boundary:
+Every kernel tradition separates privileged operations from ordinary behavior. OS kernels separate trusted kernel-mode authority from untrusted user-level applications. Microkernels make the boundary narrower by moving most services outside the kernel. Proof kernels separate primitive theorem construction from tactics and automation. Runtime kernels separate managed execution semantics from application libraries. Workflow and orchestration kernels separate transition authority from activity implementation. LLM governance kernels separate user text, source content, tool output, and model-generated candidates from operational truth.
+Contract implication:
+A kernel must publish what has authority and what does not. Anything outside the boundary may request, propose, or supply data, but it cannot directly mutate canonical state or proof objects.
+Invariant 2 - canonical state or canonical validity object:
+Kernel systems preserve one authoritative representation of truth. OS kernels maintain authoritative process, memory, scheduler, device, and access-control state. Proof kernels maintain valid theorem objects as the only trusted proof products. Runtime kernels preserve authoritative execution metadata, heap/object state, type identity, frames, and managed boundaries. Workflow kernels preserve canonical workflow state, event histories, timers, retries, and snapshots. LLM governance kernels preserve canonical state, evidence records, activation registries, audit events, and snapshots while treating conversation as non-authoritative.
+Contract implication:
+The system must distinguish observed, proposed, rendered, or cached artifacts from committed truth. A renderer, tactic, worker, model, or user interface can describe truth but cannot become the truth store.
+Invariant 3 - validation before mutation:
+Abstract kernels generally reject mutation unless required checks pass. OS kernels check permissions and privilege before hardware or memory operations. Proof kernels check primitive inference rules before creating theorem objects. Runtime kernels validate type, metadata, memory, and execution constraints before admitting operations. Workflow kernels validate state preconditions, input shape, authorization, idempotency, and concurrency before transition. LLM governance kernels require evidence, validators, and activated domain contracts before canonical mutation.
+Contract implication:
+Mutation should be the final step of a transaction, never the first. Validation failure must leave the prior state intact and produce a rejection or diagnostic rather than a partial truth.
+Invariant 4 - small trusted core and externalized policy:
+The strongest abstract-kernel designs reduce the trusted core and externalize policy. Microkernel minimality keeps only unavoidable mechanisms in the kernel while policy-heavy services run outside. LCF-style proof systems keep inference validity in a small kernel and leave search tactics outside. AWKA-style workflow governance keeps domain behavior in activated domain runtimes rather than the kernel. Runtime kernels often centralize execution semantics while libraries carry domain behavior.
+Contract implication:
+The kernel should own mechanism, invariants, and admission rules. Domain policy, content semantics, rendering style, and specialized business logic should live outside the kernel behind explicit contracts.
+Invariant 5 - governed extension surface:
+Kernel systems need extension without arbitrary privilege expansion. Monolithic kernels use modules and drivers but face larger trusted-base risk. Microkernels extend through user-space services and IPC/capability channels. Proof kernels extend through tactics and libraries whose results are checked by the kernel. Runtime kernels extend through managed assemblies, packages, libraries, or bytecode modules constrained by runtime rules. Workflow kernels extend through registered capabilities, validators, tools, schemas, renderers, and policies. LLM governance kernels extend through domain runtime definitions, activation gates, and verified registries.
+Contract implication:
+Extensions should be registered, named, versioned, validated, and restricted to permitted mutation surfaces.
+Invariant 6 - capability-governed mutation:
+Many kernel traditions converge on capability-like authority. OS and microkernel systems use privilege, handles, access control, or capabilities to constrain resource access. Runtime systems constrain code by metadata, security boundaries, type systems, or managed execution services. Workflow kernels authorize capabilities against roles, state preconditions, validators, and concurrency tokens. LLM governance kernels should treat every mutating operation as a named capability with explicit inputs, outputs, validators, authorization, events, and failure effects.
+Contract implication:
+No direct mutation path should exist. Every state-changing operation should flow through a named, authorized, validated capability or equivalent authority construct.
+Invariant 7 - durable event or audit history:
+Kernel-like systems emit or preserve traces because privileged decisions must be inspectable. OS audit frameworks record security-relevant system events. Workflow engines preserve event histories to replay and recover long-running processes. AWKA-like kernels preserve audit events and snapshots as append-only history. Proof kernels preserve proof objects or derivability structure that can be independently checked.
+Contract implication:
+Every accepted mutation should leave enough history to explain who acted, what changed, why it was allowed, which version was prior, and what state resulted.
+Invariant 8 - snapshot, proof, or checkpoint preservation:
+Rollback and restore require stable historical artifacts. OS and project kernels use checkpoints, snapshots, or rollbacks to recover from fault. Workflow kernels use snapshots and event replay to reconstruct process state. Proof kernels preserve theorem derivations or proof certificates. Verified kernels preserve an abstract specification and proof relation that justifies implementation behavior.
+Contract implication:
+History must be append-only or otherwise tamper-evident. Restore should create a new successor version rather than rewrite historical truth.
+Invariant 9 - executable verification surface:
+High-assurance kernels expose testable contracts. Verified kernels use machine-checked proof of implementation against specification. Proof kernels rely on a small trusted checker. Runtime kernels use conformance suites and standards. Workflow kernels use executable transition tests, idempotency tests, replay tests, and failure atomicity tests. LLM governance kernels require executable bootstrap and domain activation conformance before accepting runtime behavior.
+Contract implication:
+A declared invariant is incomplete until it can be tested, checked, proven, or operationally enforced.
+Invariant 10 - fail-closed behavior:
+Across traditions, a kernel should fail by preserving prior authority rather than accepting ambiguous or partially valid changes. OS kernels deny unauthorized operations. Proof kernels refuse invalid theorem construction. Runtime kernels throw or reject invalid execution. Workflow kernels roll back failed transitions. LLM governance kernels reject embedded instructions, failed validators, and unauthenticated domain behavior.
+Contract implication:
+Kernel rejection is a feature, not a failure of usability. If the system cannot prove admissibility, it should preserve the last valid state.
+Recurring contract matrix:
+- Authority boundary: shared by all kernel traditions.
+- Canonical state or proof object: shared by all, expressed differently by domain.
+- Validation-before-mutation: shared by proof, runtime, workflow, LLM governance, and security-focused OS kernels.
+- Small trusted core: strongest in microkernels, proof kernels, verified kernels, and AWKA-like designs.
+- Governed extension registry: explicit in workflow and LLM governance kernels; implicit or structural in OS, runtime, and proof systems.
+- Capability-governed mutation: explicit in microkernels and workflow kernels; analogous in OS privileges, runtime security, and proof inference constructors.
+- Event/audit history: strongest in workflow/orchestration and OS audit domains; proof kernels preserve proof history or derivability instead of operational logs.
+- Snapshot or proof preservation: shared through snapshots, checkpoints, proof certificates, event replay, or specification refinement.
+- Verification surface: machine proof, trusted checking, conformance, replay, executable tests, or activation reports.
+- Restore/rollback semantics: shared where mutation is durable; strongest when restore creates a new successor version rather than rewriting history.
+Implications for AWKA:
+AWKA can be read as an abstract workflow kernel that synthesizes these invariants: it has a domain-independent authority boundary, an executable runtime, canonical state authority, capability-exclusive mutation, validation before mutation, append-only events, snapshots, registry locking after domain activation, verification nonauthority, and source-as-data discipline. Its distinctive contribution is applying kernel discipline to LLM-mediated workflow: source text, generated text, and tool output remain data until admitted through a capability-governed path.
+Research consequence for STG-004:
+The next stage should evaluate AWKA against the invariant matrix rather than against one family alone. AWKA should be compared to proof kernels for trusted construction, microkernels for mechanism/policy separation, workflow engines for durable state/event history, and LLM governance kernels for source-as-data and activation boundaries.
+Preliminary source anchors:
+- OS kernel abstraction supports protection by isolating untrusted applications/users from trusted kernel authority.
+- Microkernel literature emphasizes minimal kernel mechanism and separation of policy from mechanism.
+- LCF/HOL proof-kernel architecture uses a small trusted kernel that checks primitive inferences while tactics remain outside the trusted base.
+- seL4 demonstrates a machine-checked refinement path from abstract specification to low-level implementation.
+- Runtime systems such as CLR provide managed execution services including metadata, security, type/runtime context, garbage collection, and cross-language integration.
+- Durable workflow engines preserve event history and replay it to reconstruct workflow state.
+- Audit frameworks demonstrate the recurring need to log security-relevant system events, while rollback-oriented mutation systems show the need for prior-state history and recovery semantics.
+- Artifact Version: ARTV-STG-004-AWKA-COMPARATIVE-001
+  Accepted Artifact: ACC-ARTV-STG-004-AWKA-COMPARATIVE-001
+  Evidence Packet: EVD-STG-004-AWKA-COMPARATIVE-001
+  Artifact Body Projection:
+  AWKA Comparative Evaluation Against Abstract Kernel Invariants
+Evaluation thesis:
+AWKA qualifies as an abstract kernel when evaluated by the invariant matrix developed in STG-003. It is not an operating system kernel, a theorem prover kernel, or a conventional workflow engine. Its architectural contribution is the combination of those traditions into a domain-independent governance kernel for LLM-mediated workflows. AWKA owns activation, authority boundaries, canonical state, registry publication, validator execution, capability-mediated mutation, event history, and snapshot integrity, while domain runtimes provide domain-specific semantics.
+1. AWKA as a domain-independent workflow kernel:
+AWKA aligns most strongly with workflow and orchestration kernels. Like durable workflow engines, it treats workflow state as a first-class object and requires transitions to pass through governed execution paths. Unlike a general workflow engine, AWKA is explicitly domain-independent. It does not encode the nouns, policies, or story of a domain inside the kernel. Instead, it activates domain runtimes that publish registries of entities, capabilities, validators, renderers, workflows, tools, schemas, and policies.
+Assessment:
+- Strong alignment with workflow kernels: canonical state, state transitions, snapshots, event history, idempotency, and failure atomicity.
+- Strong distinction from ordinary orchestration: AWKA is not merely sequencing tasks; it governs what can become canonical truth.
+- Key contract: workflow instances are created only after domain activation and runtime admission gates pass.
+2. AWKA as a proof-kernel-like validity constructor:
+AWKA resembles proof-kernel architecture because validity is constructed through a constrained trusted path. In LCF-style proof systems, tactics may search or propose proof steps, but valid theorem construction must pass through a small trusted kernel. In AWKA, prompts, source packets, tool outputs, generated artifacts, and user requests may propose operations, but valid state construction must pass through kernel capabilities and validators.
+Assessment:
+- Strong analogy to proof kernels: the important question is not who proposed the next object, but whether it was admitted by the trusted construction path.
+- Verification nonauthority is essential: test suites and reports can prove readiness but do not themselves become runtime authority.
+- Key contract: no source text, user instruction, model response, or artifact body mutates canonical state without capability-governed admission.
+3. AWKA as a microkernel-like mechanism/policy separator:
+AWKA follows a microkernel-like separation of mechanism from policy. Microkernels keep unavoidable mechanisms in the kernel while moving policy-heavy services outside the trusted core. AWKA keeps lifecycle mechanism, activation, canonical state authority, registry publication, and validator dispatch in the kernel, while domain-specific policy and behavior live in activated domain runtimes.
+Assessment:
+- Strong alignment with microkernel minimality: the kernel should not contain domain nouns.
+- Strong alignment with mechanism/policy separation: AWKA owns execution discipline, not the content semantics of every domain.
+- Key contract: domain behavior is published through registries and activated atomically, not patched into the kernel as ad hoc runtime logic.
+4. AWKA as an LLM governance kernel:
+AWKA's most distinctive classification is as an LLM governance kernel. It gives LLM-mediated work a strict authority model: conversation is not canonical state, source text is data, generated content is a candidate artifact, and runtime mutation requires an explicit capability path. This solves a core problem of LLM applications: the conversational surface can propose intent, but it should not itself be the system of record.
+Assessment:
+- Distinctive contribution: AWKA separates expression from authority.
+- Strong source-as-data discipline: uploaded files, prompts, and model output are not executable instructions unless admitted by a registered capability route.
+- Key contract: LLM output becomes operationally meaningful only when accepted, evidenced, snapshotted, and recorded through Kernel governance.
+5. Comparison against operating system kernels:
+AWKA resembles OS kernels in its authority boundary and protected-state model. OS kernels mediate access to privileged resources and isolate untrusted applications. AWKA mediates access to canonical workflow state and isolates untrusted conversational or source material from mutation authority.
+Differences:
+- OS kernels are hardware-proximate; AWKA is workflow-governance-proximate.
+- OS kernels commonly protect CPU, memory, devices, and files; AWKA protects registries, workflows, canonical states, artifacts, evidence, events, and snapshots.
+- OS kernels execute in a machine privilege model; AWKA executes in a semantic authority model.
+6. Comparison against proof kernels:
+AWKA resembles proof kernels by requiring all accepted state to be constructed through trusted rules. A proof kernel protects theorem validity; AWKA protects workflow validity. Both architectures allow untrusted helpers outside the core, but those helpers cannot directly create trusted objects.
+Differences:
+- Proof kernels produce theorem objects; AWKA produces canonical workflow states, activation decisions, snapshots, and artifacts.
+- Proof kernels validate logical inference; AWKA validates authority, state preconditions, registry membership, validator results, evidence, concurrency, idempotency, and artifact lifecycle rules.
+7. Comparison against runtime kernels:
+Runtime kernels such as managed execution environments define valid execution semantics, metadata, security boundaries, and object lifecycles. AWKA similarly defines valid workflow execution semantics. It is less concerned with memory or bytecode and more concerned with whether a domain operation is authorized, valid, replayable, and state-safe.
+Differences:
+- Runtime kernels govern program execution; AWKA governs domain workflow execution.
+- Runtime kernels admit code or managed assemblies; AWKA admits activated domain definitions and capability invocations.
+8. Comparison against workflow and orchestration engines:
+AWKA shares durable state, replay-oriented thinking, event history, transitions, and snapshots with workflow engines. It differs by making domain activation and registry publication a first-class kernel operation. A workflow engine often assumes application code is already trusted; AWKA asks whether a domain runtime itself has been admitted and whether its definitions can publish into the fixed registry set.
+Differences:
+- Workflow engines coordinate process execution; AWKA governs the definition and admission of the domain that owns process semantics.
+- Orchestrators sequence tasks; AWKA also controls which tasks are legitimate capabilities and which mutations they are permitted to make.
+9. Comparative invariant score:
+- Authority boundary: strong. AWKA clearly separates Kernel authority, Domain Runtime definition, workflow state, source data, and presentation output.
+- Canonical state ownership: strong. Canonical state is kernel-governed and not reducible to conversation or rendered artifacts.
+- Validation before mutation: strong. Capabilities, validators, state preconditions, and activation admission gates precede publication or mutation.
+- Trusted core minimization: strong. Domain semantics are kept outside the Kernel and published through registries.
+- Governed extension surface: strong. Extension occurs by candidate registry population and atomic activation publication.
+- Capability-governed mutation: strong. Mutating operations are named capabilities with authorization, validators, preconditions, event contracts, and failure effects.
+- Event/audit trace: strong. Kernel events and domain events provide diagnostic and lineage surfaces.
+- Snapshot integrity: strong. Snapshots preserve successor state and support restore/reopen behavior.
+- Verification surface: strong. Executable conformance gates activation and runtime behavior.
+- Restore/rollback semantics: developing but coherent. The model favors successor versions and fail-closed rejection rather than historical rewriting.
+10. Distinctive contribution of AWKA:
+AWKA's distinctive contribution is not merely that it has workflows, validators, or artifacts. Its novel architectural stance is that an LLM application can be governed as a kernel-mediated runtime: language proposes, the domain defines, the kernel admits, capabilities mutate, validators block, events record, snapshots preserve, and renderers present. This positions AWKA as an abstract kernel for governed generative workflows.
+11. Architectural risks and boundary conditions:
+- If domain runtimes become too large or semantically entangled, AWKA risks losing microkernel-like separation.
+- If verification reports are treated as authority rather than evidence, AWKA risks collapsing proof into policy.
+- If rendered artifacts are treated as state, AWKA risks breaking canonical state discipline.
+- If source text or prompts acquire direct mutation authority, AWKA loses its LLM governance advantage.
+- If registries are dynamically mutated after activation, AWKA loses atomic publication integrity.
+12. Final classification:
+AWKA is best classified as a domain-independent LLM workflow kernel with proof-kernel discipline and microkernel-style mechanism/policy separation. It is not a replacement for OS kernels, proof kernels, or workflow engines. It imports their disciplines into a new governance layer for LLM-driven domains.
+Implication for STG-005:
+The final synthesis should define abstract kernels as reusable governance cores and position AWKA as a concrete exemplar of an LLM-era abstract kernel. The final output should include a concise definition, a matrix comparing kernel traditions, and design principles for future domain runtimes.
+Preliminary source anchors:
+- OS kernel abstraction: trusted arbitration between untrusted applications/users and privileged resources.
+- Microkernel minimality and mechanism/policy separation.
+- LCF/HOL trusted proof-kernel discipline.
+- seL4 verified-kernel specification-to-implementation proof.
+- CLR runtime services as managed execution-governance example.
+- Durable workflow event history and replay as workflow-governance precedent.
+- Audit and rollback/history systems as evidence for traceability and recovery requirements.
+- Artifact Version: ARTV-STG-005-FINAL-SYNTHESIS-001
+  Accepted Artifact: ACC-ARTV-STG-005-FINAL-SYNTHESIS-001
+  Evidence Packet: EVD-STG-005-FINAL-SYNTHESIS-001
+  Artifact Body Projection:
+  Final Research Synthesis - Abstract Kernels as Reusable Governance Cores
+Executive thesis:
+An abstract kernel is a reusable governance core that defines authority, admissible mutation, canonical truth, extension boundaries, verification surfaces, and recovery semantics for a larger system while excluding domain-specific behavior. It is abstract not because it is vague, but because its kernel role is independent of a particular domain, application, hardware platform, or presentation surface.
+Final definition:
+An abstract kernel is a minimal trusted core that owns the rules by which state, proof, execution, or workflow truth may become valid. It provides boundary enforcement, controlled extension, validation-before-mutation, capability-governed operations, auditability, and preservation of previous truth. Domain behavior may be expressed outside the kernel, but it cannot bypass the kernel's validity path.
+Integrated scope conclusion:
+The research began by distinguishing kernels from runtimes, frameworks, engines, orchestrators, and applications. That distinction remains decisive. A runtime executes behavior. A framework supplies conventions. An engine performs a specialized function. An orchestrator sequences work. An application expresses domain intent. A kernel governs the authority path by which valid operations become trusted state or trusted outputs.
+Integrated taxonomy conclusion:
+Abstract kernels appear across several lineages:
+1. Hardware authority lineage: operating system kernels, microkernels, separation kernels, and formally verified microkernels.
+2. Logical authority lineage: LCF-style trusted proof kernels, HOL/Isabelle-style proof discipline, and proof-producing automation.
+3. Semantic execution lineage: interpreters, virtual machines, managed runtimes, type systems, and execution environments.
+4. Distributed process lineage: schedulers, workflow engines, durable orchestration systems, event-replay systems, and stateful process kernels.
+5. LLM governance lineage: prompt conventions, reusable custom instructions, governed domain runtimes, and abstract workflow kernels.
+Invariant synthesis:
+Across these traditions, the recurring invariants are:
+- Explicit authority boundary.
+- Canonical state, proof object, or validity object.
+- Validation before mutation.
+- Small trusted core and externalized policy.
+- Governed extension surface.
+- Capability-governed mutation or equivalent authority discipline.
+- Durable event, audit, or proof history.
+- Snapshot, checkpoint, proof, or recovery artifact preservation.
+- Executable verification or trusted checking surface.
+- Fail-closed rejection when admissibility cannot be proven.
+AWKA comparative conclusion:
+AWKA is best classified as a domain-independent LLM workflow kernel with proof-kernel discipline and microkernel-style mechanism/policy separation. It is not an operating system kernel, theorem prover kernel, or conventional workflow engine. Instead, it imports their architectural disciplines into LLM-mediated workflows. AWKA's distinctive contribution is separating language expression from operational authority: prompts, source packets, generated text, and tool outputs may propose or inform, but only activated domain definitions and capability-governed paths may mutate canonical state.
+AWKA as exemplar:
+AWKA demonstrates that an LLM application can be structured as a governed runtime rather than as a prompt-only behavior pattern. In AWKA, the sequence is: language proposes, source informs, domain runtime defines, kernel admits, capability mutates, validator blocks, event records, snapshot preserves, and renderer presents. This is the defining pattern of a kernel-mediated LLM workflow.
+Terminology recommendations:
+- Abstract kernel: a domain-independent trusted governance core.
+- Governance core: the minimal authority surface that owns validity rules.
+- Canonical state authority: the rule that committed state, not conversation or rendering, is the system of record.
+- Source-as-data discipline: the rule that source content informs but does not command runtime behavior.
+- Capability-governed mutation: the rule that every mutating operation must route through a named, authorized, validated capability.
+- Domain runtime activation: the process by which domain definitions become admitted into fixed kernel registries.
+- Verification nonauthority: the rule that test reports and verification artifacts are evidence for admission but not runtime authority themselves.
+- Registry publication: atomic movement of admitted domain definitions into kernel-recognized registries.
+- Snapshot integrity: preservation of canonical states as versioned recovery and audit artifacts.
+- Authority/expression separation: the distinction between what can say something and what can make it true.
+Recommended diagrams:
+1. Abstract Kernel Boundary Diagram:
+   Center: Abstract Kernel. Outside: applications, runtimes, engines, tools, renderers, users, source documents, and domain policies. Arrows into the kernel are labeled requests, candidates, evidence, and definitions. Arrows out are labeled accepted state, events, snapshots, and rendered views.
+2. Kernel Lineage Map:
+   Five branches: OS/microkernel lineage, proof-kernel lineage, runtime-kernel lineage, workflow/orchestration lineage, and LLM governance lineage. AWKA is placed at the convergence of proof-kernel discipline, workflow-kernel state authority, microkernel mechanism/policy separation, and LLM source-as-data discipline.
+3. AWKA Kernel-Mediated Workflow Diagram:
+   User prompt -> route parser -> capability gate -> validators -> canonical state mutation -> event append -> snapshot -> artifact acceptance -> renderer. Source packets and generated drafts feed into the gate as data, not commands.
+4. Invariant Matrix Diagram:
+   Rows are kernel traditions. Columns are authority boundary, canonical state, validation-before-mutation, extension surface, capability mutation, audit history, snapshot/proof preservation, verification, and fail-closed semantics.
+Architectural principles:
+1. Kernel owns mechanism, domain owns policy.
+2. Canonical state is the operational truth, not rendered output.
+3. Mutation must be capability-mediated.
+4. Validation must precede mutation.
+5. Verification enables admission but is not itself authority.
+6. Extension must be registered, versioned, and bounded.
+7. Source text and model output are data until admitted.
+8. Events and snapshots are part of the architecture, not optional logging.
+9. Restore should create successor truth, not rewrite history.
+10. Fail-closed behavior protects the kernel from ambiguous authority.
+Risks and boundary conditions:
+- Kernel bloat: if domain semantics enter the kernel, the abstract kernel loses reuse and minimality.
+- Authority leakage: if prompts, source text, or generated content mutate state directly, source-as-data discipline collapses.
+- Registry drift: if registries mutate after activation without governed publication, atomic activation loses meaning.
+- Verification confusion: if verification reports are treated as runtime authority, evidence collapses into execution.
+- Presentation confusion: if renderers become state owners, canonical state discipline is broken.
+- Over-orchestration: if the kernel becomes a task sequencer rather than a validity core, it loses kernel identity.
+Follow-up research questions:
+1. What is the minimal complete registry set for a domain-independent LLM workflow kernel?
+2. Can source-as-data discipline be formalized as a reusable security model for LLM applications?
+3. How should domain runtime activation be versioned across long-lived workflows?
+4. What is the correct relationship between proof artifacts, executable tests, and runtime admission?
+5. Can AWKA-style snapshot and event semantics support deterministic replay across model variability?
+6. What should count as a capability in LLM-governed workflows?
+7. How can renderer authority be limited while still allowing rich artifact production?
+8. Which parts of AWKA should remain kernel-level and which should be domain runtime responsibilities?
+9. Can abstract kernels provide a general design pattern for agentic systems beyond LLM workflows?
+10. What formal notation would best express authority/expression separation?
+Final conclusion:
+The research supports a strong architectural claim: abstract kernels are reusable governance cores that emerge whenever systems must distinguish proposal from authority, behavior from validity, and expression from truth. AWKA is a concrete example of this category for LLM-era workflows. Its value is not merely technical orchestration, but constitutional governance: it defines what may become true, under which authority, with which evidence, and through which mutation path.
+Preliminary source anchors:
+- OS kernel abstraction: trusted arbitration between untrusted applications/users and privileged resources.
+- Microkernel minimality and mechanism/policy separation.
+- LCF/HOL trusted proof-kernel discipline.
+- seL4 verified-kernel specification-to-implementation proof.
+- CLR runtime services as managed execution-governance example.
+- Durable workflow event history and replay as workflow-governance precedent.
+- Audit and rollback/history systems as evidence for traceability and recovery requirements.
+- Accepted AWKA workflow artifacts from STG-001 through STG-004.
+
+Renderer Metadata:
+- Renderer ID: ANDY.RENDER.FINAL_ARTIFACT_SET
+- Package Digest: a1a7f3adee860a3b59577634f047bfec0ea57011e6526818e79876bd081d6cb2

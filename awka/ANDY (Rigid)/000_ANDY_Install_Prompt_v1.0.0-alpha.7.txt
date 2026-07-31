@@ -1,0 +1,143 @@
+ANDY DOMAIN RUNTIME INSTALLATION PROMPT v1.0.0-alpha.7
+Patched AWKA Alpha.4 Event Registry Projection Compatibility Reissue
+======================================================================
+
+0. PURPOSE
+======================================================================
+This 000 prompt is the installation directive for the patched ANDY Domain
+Runtime v1.0.0-alpha.7 file set.
+
+This reissue preserves the alpha.7 behavioral contract and corrects the
+activation publication defect discovered during AWKA v1.0.0-alpha.4 activation:
+AWKA alpha.4 rejected the first alpha.7 candidate registry set because ANDY
+published a first-class event_registry, while AWKA alpha.4 accepts only its fixed
+Definition Registry set.
+
+The correction is architectural, not semantic: ANDY retains canonical Event
+Registry semantics internally, but AWKA-alpha.4 activation publishes Event
+Registry definitions as an Event Registry Catalog projection inside
+schema_registry.
+
+======================================================================
+1. REQUIRED PACKAGE FILES
+======================================================================
+Required behavioral files:
+
+001_ANDY_Manifest_v1.0.0-alpha.7.json
+002_ANDY_Model_v1_0_0_alpha_7.py
+003_ANDY_Verification_v1_0_0_alpha_7.py
+
+Installation helper:
+
+000_ANDY_Install_Prompt_v1.0.0-alpha.7.txt
+
+Last verified result artifact:
+
+ANDY_Verification_Result_v1.0.0-alpha.7.final_patched.json
+
+======================================================================
+2. FINAL HASHES
+======================================================================
+001_ANDY_Manifest_v1.0.0-alpha.7.json
+d22ec0ac24902cda3dde2063cf792bf0f351d276b2b018cc1222550fa57ffbf2
+
+002_ANDY_Model_v1_0_0_alpha_7.py
+99896e5584e5c7ddf347b4584f751c530985c7e16c8d602738b2a326bc2411ca
+
+003_ANDY_Verification_v1_0_0_alpha_7.py
+650adfe2c5b602789864e1d5f9be17230d978815ad539957eae8f2e315e142ee
+
+ANDY_Verification_Result_v1.0.0-alpha.7.final_patched.json
+51c6f7eb6f2c2e6cda98004f1205ac00a600b4ded1eaf61b7141f8dd77a85d82
+
+Semantic result digest
+2b85c23848322bde6c9258433d06ebbd4cd7fbc22a3d93a356f17aa5038e1772
+
+======================================================================
+3. PATCHED ACTIVATION-PUBLICATION RULE
+======================================================================
+For AWKA v1.0.0-alpha.4 activation, ANDY must publish only the AWKA alpha.4
+fixed candidate Definition Registry set:
+
+entity_registry
+capability_registry
+validator_registry
+renderer_registry
+workflow_registry
+tool_registry
+schema_registry
+policy_registry
+
+ANDY must not publish a first-class event_registry to AWKA alpha.4.
+
+Instead, ANDY publishes:
+
+schema_registry["ANDY.SCHEMA.EVENT_REGISTRY_CATALOG"]
+
+This projection contains all canonical Event Registry definitions and preserves:
+
+- event identity;
+- event definition count;
+- Capability events_emitted contract resolution;
+- ANDY.VAL.EVENT_CONTRACT behavior;
+- runtime Event Record semantics through ANDY.ENTITY.EVENT_RECORD.
+
+The projection is required specifically because AWKA v1.0.0-alpha.4 has a fixed
+publication registry set and rejects unknown first-class registry names during
+atomic activation publication.
+
+======================================================================
+4. ACTIVATION ADMISSION REQUIREMENTS
+======================================================================
+Activation must be an AWKA Kernel operation.
+
+Activation must:
+
+1. Verify all required file hashes.
+2. Compile 002 and 003.
+3. Execute 003.
+4. Require PASS / 260 / 260 / 0.
+5. Validate the real verification report using validate_activation_report.
+6. Confirm semantic_result_digest equals:
+   2b85c23848322bde6c9258433d06ebbd4cd7fbc22a3d93a356f17aa5038e1772
+7. Populate candidate registries only.
+8. Confirm candidate registries do not include event_registry.
+9. Confirm schema_registry includes ANDY.SCHEMA.EVENT_REGISTRY_CATALOG.
+10. Publish candidate registries atomically only after all gates pass.
+
+Activation must not create workflow instances, source packets, canonical
+workflow state, snapshots, artifacts, or Composite Operation Run records.
+
+If any activation gate fails, the Kernel must discard all candidate registries,
+leave Kernel state READY, leave Domain state DOMAIN_ABSENT, and create no
+runtime state.
+
+======================================================================
+5. VERIFIED RESULT SUMMARY
+======================================================================
+status: PASS
+declared_tests: 260
+executed_tests: 260
+required_failures: 0
+semantic_result_digest: 2b85c23848322bde6c9258433d06ebbd4cd7fbc22a3d93a356f17aa5038e1772
+
+Key verified corrections:
+
+- AWKA alpha.4 candidate registry set compatibility: PASS
+- No first-class event_registry publication for AWKA alpha.4: PASS
+- Event Registry Catalog projection in schema_registry: PASS
+- Event contract resolution through projected catalog: PASS
+- Real activation-admission report validation: PASS
+- Kernel-compatible Capability execution tests: PASS
+- Multi-stage progression: PASS
+- Artifact-set export: PASS
+- Artifact body resolution: PASS
+- Snapshot integrity: PASS
+- Restore/reopen behavior: PASS
+
+======================================================================
+6. EXPECTED FIRST RUNTIME COMMAND AFTER ACTIVATION
+======================================================================
+Run New ANDY Workflow
+
+END OF ANDY DOMAIN RUNTIME INSTALLATION PROMPT v1.0.0-alpha.7

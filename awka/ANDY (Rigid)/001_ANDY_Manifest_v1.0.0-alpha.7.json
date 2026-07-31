@@ -1,0 +1,922 @@
+{
+  "document": {
+    "document_id": "ANDY-DOMAIN-MANIFEST",
+    "document_type": "domain_runtime_manifest",
+    "document_version": "1.0.0-alpha.7",
+    "release_status": "release_candidate",
+    "target_release_status": "release_candidate",
+    "activation_ready": false,
+    "activation_ready_target": true,
+    "authority": "domain_declaration_only",
+    "behavioral_authority": false,
+    "immutable_after_successful_activation": true,
+    "supersedes": "1.0.0-alpha.6",
+    "superseded_by": null,
+    "release_theme": "Kernel-Enforced Runtime and Multi-Artifact Workflow Hardening Release",
+    "internal_testing_readiness_target": true,
+    "description": "Draft declarative manifest for ANDY Domain Runtime v1.0.0-alpha.7. This release is explicitly scoped to convert alpha.6 from an executable reference model into a Kernel-enforced AWKA Domain Runtime by addressing peer-review blocking findings on activation admission, runtime-enforced tests, multi-stage progression, artifact-set export, artifact body-by-reference resolution, Capability-specific contracts, event equivalence, concurrency, Snapshot integrity, restore/reopen behavior, and proof-class reporting."
+  },
+  "runtime_identity": {
+    "runtime_id": "ANDY.DOMAIN.RUNTIME",
+    "runtime_name": "ANDY Domain Runtime",
+    "runtime_full_name": "Adopted Narrative Directional Yielder",
+    "runtime_version": "1.0.0-alpha.7",
+    "runtime_kind": "awka_domain_runtime_definition",
+    "namespace_root": "ANDY",
+    "domain_kind": "kernel_enforced_procedural_narrative_runtime",
+    "primary_workflow_type": "Procedural Narrative Workflow",
+    "workflow_instance_type": "ANDY.NARRATIVE.INSTANCE",
+    "aggregate_root": "ANDY.ENTITY.NARRATIVE_WORKFLOW"
+  },
+  "compatibility": {
+    "required_awka_constitution_version": "1.0.0-alpha.4",
+    "required_awka_runtime_version": "1.0.0-alpha.4",
+    "required_awka_constitution_api": "1.0",
+    "required_awka_runtime_api": "1.0",
+    "required_awka_domain_runtime_api": "1.0",
+    "minimum_python": "3.10"
+  },
+  "required_uploaded_files": [
+    "001_ANDY_Manifest_v1.0.0-alpha.7.json",
+    "002_ANDY_Model_v1_0_0_alpha_7.py",
+    "003_ANDY_Verification_v1_0_0_alpha_7.py"
+  ],
+  "optional_helper_files": [
+    "000_ANDY_Install_Prompt_v1.0.0-alpha.7.txt",
+    "ANDY_Verification_Result_v1.0.0-alpha.7.json",
+    "ANDY_Release_Notes_v1.0.0-alpha.7.md",
+    "ANDY_alpha7_Peer_Review_Response.md",
+    "ANDY_alpha7_Proof_Class_Report.json"
+  ],
+  "component_contracts": [
+    {
+      "component_id": "ANDY-MODEL",
+      "file": "002_ANDY_Model_v1_0_0_alpha_7.py",
+      "component_type": "executable_domain_model",
+      "required": true,
+      "version": "1.0.0-alpha.7",
+      "authority": "domain_behavioral_authority",
+      "digest_policy": "exact_lowercase_sha256",
+      "sha256": "99896e5584e5c7ddf347b4584f751c530985c7e16c8d602738b2a326bc2411ca",
+      "digest_status": "verified"
+    },
+    {
+      "component_id": "ANDY-VERIFICATION",
+      "file": "003_ANDY_Verification_v1_0_0_alpha_7.py",
+      "component_type": "executable_domain_verification",
+      "required": true,
+      "version": "1.0.0-alpha.7",
+      "authority": "verification_nonauthority",
+      "digest_policy": "exact_lowercase_sha256",
+      "sha256": "650adfe2c5b602789864e1d5f9be17230d978815ad539957eae8f2e315e142ee",
+      "digest_status": "verified"
+    }
+  ],
+  "alpha_6_baseline": {
+    "posture_after_peer_review": {
+      "release_status": "release_candidate",
+      "activation_ready": false,
+      "internal_testing_readiness_target": true,
+      "reason": "Peer review accepted alpha.6 as a strong internal reference baseline but withheld unqualified activation readiness because Kernel enforcement proof was incomplete."
+    },
+    "known_file_hashes": {
+      "000_ANDY_Install_Prompt_v1.0.0-alpha.6.txt": "c02243e46461040cfcc4c72356d9d739519c0b95a7c1bff18dc498e231eacd07",
+      "001_ANDY_Manifest_v1.0.0-alpha.6.json": "4f7c93fd657207d7020614c36e451882c0d3629fee184f7f0daa7a5c99be920b",
+      "002_ANDY_Model_v1_0_0_alpha_6.py": "464a73ff59e8461f1bcb628ed41cfe3a3d3ce245c58d7791b57daae9cb0865c0",
+      "003_ANDY_Verification_v1_0_0_alpha_6.py": "c111de9e39e317ed2213bb84640fc76f38631ac5b35d6c65ac36417479a211a3",
+      "ANDY_Verification_Result_v1.0.0-alpha.6.json": "e29c2da40bb820a536dbca72c5306da2f084ab1d0acacddb0af81e0e53743ad6"
+    },
+    "accepted_peer_review_date": "2026-07-31"
+  },
+  "activation_policy": {
+    "activation_requires_kernel_state": "READY",
+    "activation_requires_domain_state": "DOMAIN_ABSENT",
+    "partial_activation_permitted": false,
+    "dynamic_registration_after_activation_permitted": false,
+    "workflow_creation_during_activation": false,
+    "source_packet_creation_during_activation": false,
+    "canonical_state_creation_during_activation": false,
+    "snapshot_creation_during_activation": false,
+    "artifact_creation_during_activation": false,
+    "composite_operation_run_creation_during_activation": false,
+    "business_or_procedural_data_creation_during_activation": false,
+    "candidate_registry_population_only": true,
+    "published_registry_mutation_by_model_permitted": false,
+    "activation_requires_real_conformance_report": true,
+    "activation_admission_validator_required": "ANDY.VAL.ACTIVATION_ADMISSION",
+    "activation_admission_report_schema": "ANDY.SCHEMA.ACTIVATION_ADMISSION_REPORT",
+    "activation_must_validate_semantic_result_digest": true,
+    "failed_activation_effect": "discard_candidate_registries_publish_nothing_and_return_kernel_to_READY",
+    "activation_ready": false
+  },
+  "alpha_7_design_decisions": {
+    "primary_release_objective": "kernel_enforced_runtime_hardening",
+    "no_new_product_features": true,
+    "preserve_alpha_6_reference_model_direction": true,
+    "alpha_6_release_posture_is_internal_release_candidate": true,
+    "real_activation_admission_report_required": true,
+    "runtime_enforced_tests_must_use_kernel_capability_path": true,
+    "direct_helper_tests_must_not_be_labeled_runtime_enforced": true,
+    "model_reference_behavior_proof_class_required": true,
+    "multi_stage_progression_required": true,
+    "finalization_requires_workflow_complete": true,
+    "direct_stage_advanced_to_final_export_path_disallowed_by_default": true,
+    "artifact_set_export_required": true,
+    "member_receipts_plus_aggregate_receipt_required": true,
+    "artifact_body_reference_resolution_required": true,
+    "demo_inline_cache_requires_digest_match": true,
+    "capability_specific_contracts_required": true,
+    "event_registry_required": true,
+    "declared_events_must_match_emitted_events": true,
+    "capability_specific_concurrency_required": true,
+    "semantic_policy_validator_mapping_required": true,
+    "selected_snapshot_digest_must_cover_complete_snapshot": true,
+    "restore_and_reopen_behavior_must_be_executable": true,
+    "adapter_route_evidence_records_required": true,
+    "parser_duplicate_unknown_and_malformed_payload_rejection_required": true,
+    "blocked_state_semantics_must_be_explicit": true,
+    "semantic_result_digest_required": true,
+    "raw_test_count_not_primary_maturity_signal": true,
+    "no_branching": true,
+    "no_parallel_stages": true,
+    "no_narrative_libraries": true,
+    "no_multi_agent_delegation": true,
+    "no_cryptographic_signing": true,
+    "awka_alpha4_event_registry_projection_required": true
+  },
+  "peer_review_basis": {
+    "review_file": "ANDY alpha.6 Peer Review.txt",
+    "review_scope": "four_file_alpha_6_suite",
+    "accepted_disposition": "alpha_6_internal_release_candidate_alpha_7_required",
+    "blocking_findings_accepted": [
+      {
+        "finding_id": "BLOCK-001",
+        "title": "Activation admission does not use the real conformance report",
+        "alpha_7_requirement": "validate_activation_report(report, manifest) must be executable and used by activation tests."
+      },
+      {
+        "finding_id": "BLOCK-002",
+        "title": "runtime_enforced tests bypass the AWKA Runtime",
+        "alpha_7_requirement": "Kernel-enforced proof labels require execution through AWKA or an AWKA-compatible Capability executor."
+      },
+      {
+        "finding_id": "BLOCK-003",
+        "title": "Multi-stage workflow execution is incomplete",
+        "alpha_7_requirement": "Stage advancement must move to the next stage or WORKFLOW_COMPLETE deterministically."
+      },
+      {
+        "finding_id": "BLOCK-004",
+        "title": "Final export does not export an artifact set",
+        "alpha_7_requirement": "EXPORT_ARTIFACT_SET must include all selected accepted dependency-eligible members or explicitly record exclusions."
+      },
+      {
+        "finding_id": "BLOCK-005",
+        "title": "Artifact body-by-reference is not enforced end to end",
+        "alpha_7_requirement": "Artifact body resolver must resolve references, verify digest/media type/size, and record the resolution path."
+      }
+    ],
+    "high_priority_findings_accepted": [
+      "HIGH-001 Capability contracts are structurally complete but semantically generic",
+      "HIGH-002 Declared Capability events do not match implemented events",
+      "HIGH-003 Capability-specific concurrency remains unimplemented",
+      "HIGH-004 Most policies are connected to a generic WORKFLOW Validator",
+      "HIGH-005 Verification count is inflated by generated structural tests",
+      "HIGH-006 Verification-result determinism is partially established",
+      "HIGH-007 Snapshot integrity remains a simplified demonstration",
+      "HIGH-008 Restore and reopen are not behaviorally tested"
+    ],
+    "medium_priority_findings_accepted": [
+      "MEDIUM-001 BLOCKED is terminal-like without a recovery edge",
+      "MEDIUM-002 Finalization does not verify every Stage Record",
+      "MEDIUM-003 Composite timestamps are placeholders",
+      "MEDIUM-004 Adapter Route Evidence is referenced but not persisted",
+      "MEDIUM-005 Acceptance parser needs duplicate-key and unknown-token rules"
+    ]
+  },
+  "domain_definition_counts": {
+    "entities": 24,
+    "capabilities": 30,
+    "primitive_capabilities": 27,
+    "composite_capabilities": 3,
+    "validators": 30,
+    "workflows": 1,
+    "workflow_states": 15,
+    "workflow_transitions": "pending_alpha_7_model_finalization",
+    "renderers": 10,
+    "tool_bindings": 8,
+    "policies": "pending_alpha_7_model_finalization",
+    "schemas": 11,
+    "adapter_contracts": 1,
+    "event_definitions": 37,
+    "proof_classes": 6,
+    "declared_tests": 260,
+    "declared_tests_status": "finalized",
+    "activation_publication_schemas": 12,
+    "canonical_schemas": 11,
+    "activation_publication_registries": "awka_alpha4_fixed_set_without_event_registry"
+  },
+  "lifecycle_architecture": {
+    "workflow_state_model": {
+      "states": [
+        "UNINITIALIZED",
+        "NARRATIVE_LOADED",
+        "STAGE_READY",
+        "PROMPT_SUBMITTED",
+        "STAGE_EXECUTING",
+        "STAGE_REVIEW_ACTIVE",
+        "STAGE_COMPLETION_PENDING",
+        "STAGE_COMPLETE_CONFIRMED",
+        "STAGE_ADVANCED",
+        "WORKFLOW_COMPLETE",
+        "FINAL_EXPORT_READY",
+        "EXPORTED",
+        "CLOSED",
+        "REOPENED",
+        "BLOCKED"
+      ],
+      "terminal_or_terminal_like_states": [
+        "CLOSED",
+        "BLOCKED"
+      ],
+      "alpha_7_progression_rule": "ADVANCE_STAGE must either prepare the next linear stage and return to STAGE_READY, or transition to WORKFLOW_COMPLETE when the final stage is advanced.",
+      "finalization_rule": "FINALIZE_WORKFLOW requires WORKFLOW_COMPLETE unless an explicitly declared compatibility exception exists.",
+      "blocked_state_rule": "BLOCKED must be either a true graph state with entry and recovery semantics, or represented as workflow_status=blocked while current_state remains unchanged. Alpha.7 must choose one."
+    },
+    "artifact_version_lifecycle": {
+      "statuses": [
+        "draft",
+        "registered",
+        "revision_requested",
+        "accepted_pending_evidence",
+        "accepted_dependency_eligible",
+        "rejected",
+        "disallowed",
+        "superseded",
+        "inactive",
+        "archived",
+        "restored_as_new_version",
+        "nongoverned_out_of_band"
+      ],
+      "dependency_eligibility_rule": "Only accepted_dependency_eligible artifact versions linked to valid Evidence Packets may enter active context or artifact-set export."
+    },
+    "artifact_set_lifecycle": {
+      "required": true,
+      "export_policy": "EXPORT_ARTIFACT_SET must create deterministic member manifests, member receipts, and an aggregate artifact-set receipt.",
+      "selection_policy_required": true,
+      "exclusion_reporting_required": true
+    }
+  },
+  "artifact_body_resolution_contract": {
+    "resolver_required": true,
+    "resolver_tool_binding": "ANDY.TOOL.ARTIFACT_BODY_RESOLVER",
+    "resolution_record_entity": "ANDY.ENTITY.ARTIFACT_BODY_RESOLUTION_RECORD",
+    "resolution_record_schema": "ANDY.SCHEMA.ARTIFACT_BODY_RESOLUTION_RECORD",
+    "required_resolution_steps": [
+      "resolve_artifact_body_ref",
+      "obtain_bytes",
+      "calculate_sha256",
+      "compare_to_artifact_digest",
+      "verify_media_type",
+      "verify_size_bytes",
+      "provide_immutable_bytes_to_renderer",
+      "record_resolution_path_in_receipt"
+    ],
+    "demo_inline_cache_policy": {
+      "permitted": true,
+      "storage_class_required": "demo_inline_cache",
+      "digest_match_required": true,
+      "authoritative": false
+    },
+    "failure_cases_required": [
+      "missing_artifact_body_ref",
+      "unresolvable_reference",
+      "digest_mismatch",
+      "media_type_mismatch",
+      "size_mismatch",
+      "inline_cache_without_demo_storage_class"
+    ]
+  },
+  "artifact_set_export_contract": {
+    "member_receipts_required": true,
+    "aggregate_receipt_required": true,
+    "deterministic_member_order_required": true,
+    "member_manifest_required": true,
+    "member_manifest_digest_required": true,
+    "aggregate_package_digest_required": true,
+    "included_members_required_fields": [
+      "artifact_version_id",
+      "accepted_artifact_id",
+      "evidence_packet_id",
+      "source_artifact_digest",
+      "exported_member_digest",
+      "member_receipt_id"
+    ],
+    "excluded_candidates_required_fields": [
+      "artifact_version_id",
+      "status",
+      "exclusion_reason"
+    ]
+  },
+  "activation_admission_report_contract": {
+    "schema_id": "ANDY.SCHEMA.ACTIVATION_ADMISSION_REPORT",
+    "validator_id": "ANDY.VAL.ACTIVATION_ADMISSION",
+    "function_required": "validate_activation_report",
+    "required_report_fields": [
+      "verification_suite",
+      "domain_id",
+      "version",
+      "awka_version",
+      "declared_tests",
+      "executed_tests",
+      "required_failures",
+      "status",
+      "model_sha256",
+      "verification_sha256",
+      "semantic_result_digest",
+      "results"
+    ],
+    "required_summary_flags": [
+      "required_test_groups_emitted",
+      "activation_admission_report_tests_passed",
+      "kernel_capability_execution_tests_passed",
+      "multi_stage_progression_tests_passed",
+      "artifact_set_export_tests_passed",
+      "artifact_body_resolution_tests_passed",
+      "capability_contract_specificity_tests_passed",
+      "event_equivalence_tests_passed",
+      "snapshot_integrity_tests_passed",
+      "restore_and_reopen_tests_passed",
+      "semantic_result_digest_tests_passed"
+    ],
+    "activation_must_fail_when_report_fails": true,
+    "activation_must_fail_when_any_result_failed": true,
+    "activation_must_fail_when_hashes_mismatch": true,
+    "activation_must_fail_when_required_groups_missing": true
+  },
+  "proof_classification_contract": {
+    "proof_classes": [
+      "declared_only",
+      "loaded_and_queryable",
+      "model_reference_behavior_proven",
+      "kernel_admission_proven",
+      "kernel_capability_enforced",
+      "executable_conformance_proven"
+    ],
+    "runtime_enforced_label_deprecated": true,
+    "kernel_capability_enforced_requires_kernel_execution": true,
+    "direct_model_helper_tests_are_model_reference_behavior_only": true,
+    "raw_test_count_not_primary_maturity_signal": true,
+    "required_report_summaries": [
+      "proof_class_summary",
+      "scenario_summary",
+      "structural_test_count",
+      "behavioral_test_count",
+      "kernel_enforced_test_count",
+      "negative_test_count",
+      "generated_structural_check_count"
+    ]
+  },
+  "capability_contract_policy": {
+    "full_contract_required": true,
+    "capability_specific_contracts_required": true,
+    "generic_payload_contracts_disallowed_for_critical_capabilities": true,
+    "required_fields": [
+      "capability_id",
+      "version",
+      "purpose",
+      "inputs",
+      "outputs",
+      "preconditions",
+      "postconditions",
+      "permitted_mutations",
+      "validator_ids",
+      "authorization",
+      "events_emitted",
+      "failure_effect",
+      "idempotency",
+      "concurrency_requirement",
+      "composite",
+      "body_authority"
+    ],
+    "critical_capabilities_requiring_specific_contracts": [
+      "ANDY.CAP.CREATE_WORKFLOW_INSTANCE",
+      "ANDY.CAP.LOAD_NARRATIVE",
+      "ANDY.CAP.VALIDATE_NARRATIVE",
+      "ANDY.CAP.SUBMIT_STAGE_PROMPT",
+      "ANDY.CAP.EXECUTE_STAGE",
+      "ANDY.CAP.OPEN_STAGE_REVIEW",
+      "ANDY.CAP.REGISTER_ARTIFACT",
+      "ANDY.CAP.ACCEPT_ARTIFACT",
+      "ANDY.CAP.ATTACH_EVIDENCE_PACKET",
+      "ANDY.CAP.PROMOTE_ARTIFACT_DEPENDENCY_ELIGIBLE",
+      "ANDY.CAP.EVALUATE_STAGE_COMPLETION",
+      "ANDY.CAP.CONFIRM_STAGE_COMPLETE",
+      "ANDY.CAP.ADVANCE_STAGE",
+      "ANDY.CAP.FINALIZE_WORKFLOW",
+      "ANDY.CAP.EXPORT_ARTIFACT_SET",
+      "ANDY.CAP.CLOSE_WORKFLOW",
+      "ANDY.CAP.REOPEN_STAGE_AS_NEW_VERSION",
+      "ANDY.CAP.RESTORE_AS_NEW_VERSION"
+    ],
+    "capability_concurrency_classes": [
+      "CREATE",
+      "MUTATE",
+      "READ_OR_PROJECT",
+      "EXPORT",
+      "RESTORE"
+    ],
+    "capability_event_equivalence_required": true
+  },
+  "kernel_enforcement_contract": {
+    "awka_capability_execution_required": true,
+    "execute_capability_adapter_permitted_if_awka_alpha4_lacks_direct_api": true,
+    "required_enforcement_axes": [
+      "authorization",
+      "validator_order",
+      "state_preconditions",
+      "concurrency",
+      "idempotency",
+      "permitted_mutation_stores",
+      "event_contract",
+      "successor_snapshot",
+      "failure_atomicity"
+    ],
+    "negative_tests_required": [
+      "unauthorized_actor",
+      "wrong_state",
+      "stale_active_version",
+      "validator_failure",
+      "mutation_outside_permitted_store",
+      "duplicate_invocation_id_with_conflicting_payload"
+    ]
+  },
+  "event_registry_contract": {
+    "event_registry_required": true,
+    "event_definition_entity": "ANDY.ENTITY.EVENT_DEFINITION",
+    "event_record_entity": "ANDY.ENTITY.EVENT_RECORD",
+    "schema_id": "ANDY.SCHEMA.EVENT_DEFINITION",
+    "validator_id": "ANDY.VAL.EVENT_CONTRACT",
+    "declared_events_must_equal_or_cover_emitted_events": true,
+    "unregistered_events_disallowed": true,
+    "awka_alpha4_projection_required": true,
+    "awka_alpha4_projection_registry": "schema_registry",
+    "awka_alpha4_projection_definition_id": "ANDY.SCHEMA.EVENT_REGISTRY_CATALOG"
+  },
+  "policy_validator_mapping_contract": {
+    "semantic_mapping_required": true,
+    "validator_id": "ANDY.VAL.POLICY_VALIDATOR_MAPPING",
+    "generic_workflow_mapping_disallowed_for_specialized_policies": true,
+    "required_semantic_mappings": {
+      "ANDY.POLICY.EXACT_PROMPT_COMMAND_REQUIRED": [
+        "ANDY.VAL.INTERACTION_ADAPTER"
+      ],
+      "ANDY.POLICY.NO_AUTONOMOUS_PROMPT_CAPTURE": [
+        "ANDY.VAL.INTERACTION_ADAPTER"
+      ],
+      "ANDY.POLICY.EVIDENCE_PACKET_PROMOTES_DEPENDENCY_ELIGIBILITY": [
+        "ANDY.VAL.EVIDENCE",
+        "ANDY.VAL.DEPENDENCY"
+      ],
+      "ANDY.POLICY.ARTIFACT_BODY_BY_REFERENCE": [
+        "ANDY.VAL.ARTIFACT",
+        "ANDY.VAL.ARTIFACT_BODY_RESOLUTION"
+      ],
+      "ANDY.POLICY.ARTIFACT_RECEIPT_REQUIRED": [
+        "ANDY.VAL.EXPORT"
+      ],
+      "ANDY.POLICY.ACTIVATION_ADMISSION_REQUIRES_REAL_REPORT": [
+        "ANDY.VAL.ACTIVATION_ADMISSION"
+      ],
+      "ANDY.POLICY.CAPABILITY_SPECIFIC_CONCURRENCY": [
+        "ANDY.VAL.CONCURRENCY"
+      ],
+      "ANDY.POLICY.RUNTIME_STATE_SERIALIZATION_MUST_BE_CONSISTENT": [
+        "ANDY.VAL.SNAPSHOT"
+      ],
+      "ANDY.POLICY.FINAL_EXPORT_MUST_NOT_LEAK_DRAFT_STATUS": [
+        "ANDY.VAL.FINAL_EXPORT_PROJECTION"
+      ],
+      "ANDY.POLICY.MACRO_COMMANDS_REQUIRE_EXPLICIT_PAYLOADS": [
+        "ANDY.VAL.INTERACTION_ADAPTER"
+      ]
+    }
+  },
+  "snapshot_integrity_contract": {
+    "complete_selected_snapshot_digest_required": true,
+    "canonical_serializer_tool": "ANDY.TOOL.CANONICAL_SERIALIZER",
+    "digest_algorithm": "sha256",
+    "digest_scope": "complete_selected_snapshot_canonical_serialization",
+    "receipt_selected_snapshot_digest_must_equal_stored_snapshot_digest": true,
+    "renderer_must_consume_selected_snapshot": true
+  },
+  "restore_and_reopen_contract": {
+    "behavioral_tests_required": true,
+    "restore_creates_successor_version": true,
+    "reopen_creates_successor_stage_version": true,
+    "historical_snapshots_immutable": true,
+    "lineage_required": true,
+    "stale_restore_request_must_fail": true,
+    "reopen_must_not_reactivate_rejected_or_superseded_artifacts_by_default": true
+  },
+  "adapter_payload_parser_contract": {
+    "structured_payload_parser_required": true,
+    "accept_artifact_with_evidence_required_fields": [
+      "artifact_ref",
+      "evidence_source",
+      "acceptance"
+    ],
+    "duplicate_keys_mutate_state": false,
+    "unknown_keys_mutate_state": false,
+    "alternate_capitalization_mutates_state": false,
+    "malformed_separators_mutate_state": false,
+    "embedded_key_like_strings_mutate_state": false,
+    "oversized_payload_mutates_state": false,
+    "blank_artifact_ref_mutates_state": false,
+    "blank_evidence_source_mutates_state": false,
+    "blank_acceptance_mutates_state": false,
+    "wrong_stage_mutates_state": false,
+    "vague_text_mutates_state": false
+  },
+  "adapter_route_evidence_contract": {
+    "persistence_required": true,
+    "entity_id": "ANDY.ENTITY.ADAPTER_ROUTE_EVIDENCE",
+    "schema_id": "ANDY.SCHEMA.ADAPTER_ROUTE_EVIDENCE",
+    "state_store": "adapter_route_evidence_records",
+    "required_fields": [
+      "adapter_route_evidence_id",
+      "message_digest",
+      "command_pattern_id",
+      "matched_route",
+      "capability_id",
+      "stage_id",
+      "slot_id",
+      "actor_reference",
+      "invocation_id",
+      "created_sequence",
+      "payload_digest",
+      "route_status"
+    ],
+    "prompt_version_must_link_to_real_record": true,
+    "acceptance_macro_must_link_to_real_record": true
+  },
+  "required_entities": [
+    "ANDY.ENTITY.NARRATIVE_WORKFLOW",
+    "ANDY.ENTITY.NARRATIVE_DEFINITION",
+    "ANDY.ENTITY.STAGE_RECORD",
+    "ANDY.ENTITY.NARRATIVE_STAGE",
+    "ANDY.ENTITY.STAGE_PROMPT_VERSION",
+    "ANDY.ENTITY.ARTIFACT_SLOT",
+    "ANDY.ENTITY.ARTIFACT_SLOT_DISPOSITION",
+    "ANDY.ENTITY.ARTIFACT_REGISTRATION",
+    "ANDY.ENTITY.ARTIFACT_VERSION",
+    "ANDY.ENTITY.ACCEPTED_ARTIFACT",
+    "ANDY.ENTITY.REJECTION_RECORD",
+    "ANDY.ENTITY.EVIDENCE_PACKET",
+    "ANDY.ENTITY.DEPENDENCY_EDGE",
+    "ANDY.ENTITY.ARTIFACT_RECEIPT",
+    "ANDY.ENTITY.ADAPTER_ROUTE_EVIDENCE",
+    "ANDY.ENTITY.COMPOSITE_OPERATION_RUN",
+    "ANDY.ENTITY.EVENT_DEFINITION",
+    "ANDY.ENTITY.EVENT_RECORD",
+    "ANDY.ENTITY.ARTIFACT_SET",
+    "ANDY.ENTITY.ARTIFACT_SET_MEMBER",
+    "ANDY.ENTITY.ARTIFACT_SET_RECEIPT",
+    "ANDY.ENTITY.ARTIFACT_BODY_RESOLUTION_RECORD",
+    "ANDY.ENTITY.SNAPSHOT_RECORD",
+    "ANDY.ENTITY.ACTIVATION_ADMISSION_REPORT"
+  ],
+  "required_primitive_capabilities": [
+    "ANDY.CAP.CREATE_WORKFLOW_INSTANCE",
+    "ANDY.CAP.LOAD_NARRATIVE",
+    "ANDY.CAP.VALIDATE_NARRATIVE",
+    "ANDY.CAP.SUBMIT_STAGE_PROMPT",
+    "ANDY.CAP.UPDATE_STAGE_PROMPT",
+    "ANDY.CAP.EXECUTE_STAGE",
+    "ANDY.CAP.OPEN_STAGE_REVIEW",
+    "ANDY.CAP.GENERATE_DRAFT_ARTIFACT",
+    "ANDY.CAP.REGISTER_ARTIFACT",
+    "ANDY.CAP.SUBMIT_FEEDBACK",
+    "ANDY.CAP.REQUEST_REVISION",
+    "ANDY.CAP.REVISE_ARTIFACT",
+    "ANDY.CAP.ACCEPT_ARTIFACT",
+    "ANDY.CAP.ATTACH_EVIDENCE_PACKET",
+    "ANDY.CAP.PROMOTE_ARTIFACT_DEPENDENCY_ELIGIBLE",
+    "ANDY.CAP.REJECT_ARTIFACT",
+    "ANDY.CAP.DEFER_OPTIONAL_ARTIFACT_SLOT",
+    "ANDY.CAP.EVALUATE_STAGE_COMPLETION",
+    "ANDY.CAP.CONFIRM_STAGE_COMPLETE",
+    "ANDY.CAP.ADVANCE_STAGE",
+    "ANDY.CAP.RECONSTRUCT_CONTEXT",
+    "ANDY.CAP.BLOCK_WORKFLOW",
+    "ANDY.CAP.REOPEN_STAGE_AS_NEW_VERSION",
+    "ANDY.CAP.RESTORE_AS_NEW_VERSION",
+    "ANDY.CAP.FINALIZE_WORKFLOW",
+    "ANDY.CAP.EXPORT_ARTIFACT_SET",
+    "ANDY.CAP.CLOSE_WORKFLOW"
+  ],
+  "required_composite_capabilities": [
+    "ANDY.CAP.ADOPT_NARRATIVE",
+    "ANDY.CAP.RUN_STAGE_TO_REVIEW",
+    "ANDY.CAP.ACCEPT_ARTIFACT_WITH_EVIDENCE"
+  ],
+  "required_capabilities": [
+    "ANDY.CAP.CREATE_WORKFLOW_INSTANCE",
+    "ANDY.CAP.LOAD_NARRATIVE",
+    "ANDY.CAP.VALIDATE_NARRATIVE",
+    "ANDY.CAP.SUBMIT_STAGE_PROMPT",
+    "ANDY.CAP.UPDATE_STAGE_PROMPT",
+    "ANDY.CAP.EXECUTE_STAGE",
+    "ANDY.CAP.OPEN_STAGE_REVIEW",
+    "ANDY.CAP.GENERATE_DRAFT_ARTIFACT",
+    "ANDY.CAP.REGISTER_ARTIFACT",
+    "ANDY.CAP.SUBMIT_FEEDBACK",
+    "ANDY.CAP.REQUEST_REVISION",
+    "ANDY.CAP.REVISE_ARTIFACT",
+    "ANDY.CAP.ACCEPT_ARTIFACT",
+    "ANDY.CAP.ATTACH_EVIDENCE_PACKET",
+    "ANDY.CAP.PROMOTE_ARTIFACT_DEPENDENCY_ELIGIBLE",
+    "ANDY.CAP.REJECT_ARTIFACT",
+    "ANDY.CAP.DEFER_OPTIONAL_ARTIFACT_SLOT",
+    "ANDY.CAP.EVALUATE_STAGE_COMPLETION",
+    "ANDY.CAP.CONFIRM_STAGE_COMPLETE",
+    "ANDY.CAP.ADVANCE_STAGE",
+    "ANDY.CAP.RECONSTRUCT_CONTEXT",
+    "ANDY.CAP.BLOCK_WORKFLOW",
+    "ANDY.CAP.REOPEN_STAGE_AS_NEW_VERSION",
+    "ANDY.CAP.RESTORE_AS_NEW_VERSION",
+    "ANDY.CAP.FINALIZE_WORKFLOW",
+    "ANDY.CAP.EXPORT_ARTIFACT_SET",
+    "ANDY.CAP.CLOSE_WORKFLOW",
+    "ANDY.CAP.ADOPT_NARRATIVE",
+    "ANDY.CAP.RUN_STAGE_TO_REVIEW",
+    "ANDY.CAP.ACCEPT_ARTIFACT_WITH_EVIDENCE"
+  ],
+  "required_validators": [
+    "ANDY.VAL.AUTHORITY",
+    "ANDY.VAL.NARRATIVE",
+    "ANDY.VAL.STAGE",
+    "ANDY.VAL.STAGE_PROMPT",
+    "ANDY.VAL.INTERACTION_ADAPTER",
+    "ANDY.VAL.ARTIFACT",
+    "ANDY.VAL.ARTIFACT_SLOT",
+    "ANDY.VAL.ARTIFACT_SLOT_DISPOSITION",
+    "ANDY.VAL.DISALLOWED_ARTIFACT",
+    "ANDY.VAL.REJECTION",
+    "ANDY.VAL.FEEDBACK",
+    "ANDY.VAL.ACCEPTANCE",
+    "ANDY.VAL.EVIDENCE",
+    "ANDY.VAL.DEPENDENCY",
+    "ANDY.VAL.DRAFT_ISOLATION",
+    "ANDY.VAL.CONTEXT",
+    "ANDY.VAL.WORKFLOW",
+    "ANDY.VAL.WORKFLOW_GRAPH",
+    "ANDY.VAL.BUSINESS",
+    "ANDY.VAL.SNAPSHOT",
+    "ANDY.VAL.PRESENTATION",
+    "ANDY.VAL.EXPORT",
+    "ANDY.VAL.ACTIVATION_ADMISSION",
+    "ANDY.VAL.COMPOSITE_OPERATION",
+    "ANDY.VAL.FINAL_EXPORT_PROJECTION",
+    "ANDY.VAL.CONCURRENCY",
+    "ANDY.VAL.ARTIFACT_BODY_RESOLUTION",
+    "ANDY.VAL.EVENT_CONTRACT",
+    "ANDY.VAL.ARTIFACT_SET_EXPORT",
+    "ANDY.VAL.POLICY_VALIDATOR_MAPPING"
+  ],
+  "required_workflows": [
+    "ANDY.WF.NARRATIVE_PROCEDURE"
+  ],
+  "required_renderers": [
+    "ANDY.RENDER.STAGE_REVIEW",
+    "ANDY.RENDER.ARTIFACT_REGISTRY",
+    "ANDY.RENDER.ARTIFACT_VERSION_HISTORY",
+    "ANDY.RENDER.REJECTION_HISTORY",
+    "ANDY.RENDER.EVIDENCE_PACKET",
+    "ANDY.RENDER.NARRATIVE_CONTEXT",
+    "ANDY.RENDER.FINAL_ARTIFACT_SET",
+    "ANDY.RENDER.ARTIFACT_SET_MANIFEST",
+    "ANDY.RENDER.AUDIT_DIAGNOSTIC",
+    "ANDY.RENDER.JSON_EXPORT"
+  ],
+  "required_tool_bindings": [
+    "ANDY.TOOL.ARTIFACT_GENERATOR",
+    "ANDY.TOOL.TEXT_RENDERER",
+    "ANDY.TOOL.FILE_EXPORTER",
+    "ANDY.TOOL.JSON_EXPORTER",
+    "ANDY.TOOL.DIAGNOSTIC_RENDERER",
+    "ANDY.TOOL.DIGEST_CALCULATOR",
+    "ANDY.TOOL.ARTIFACT_BODY_RESOLVER",
+    "ANDY.TOOL.CANONICAL_SERIALIZER"
+  ],
+  "required_schemas": [
+    "ANDY.SCHEMA.CANONICAL_MODEL",
+    "ANDY.SCHEMA.INTERACTION_ADAPTER_CONTRACT",
+    "ANDY.SCHEMA.ADAPTER_ROUTE_EVIDENCE",
+    "ANDY.SCHEMA.COMPOSITE_OPERATION_RUN",
+    "ANDY.SCHEMA.EXPORT_PROJECTION_QA",
+    "ANDY.SCHEMA.ACTIVATION_ADMISSION_REPORT",
+    "ANDY.SCHEMA.ARTIFACT_BODY_RESOLUTION_RECORD",
+    "ANDY.SCHEMA.ARTIFACT_SET_MANIFEST",
+    "ANDY.SCHEMA.EVENT_DEFINITION",
+    "ANDY.SCHEMA.PROOF_CLASS_REPORT",
+    "ANDY.SCHEMA.CONCURRENCY_CONTRACT"
+  ],
+  "required_proof_classes": [
+    "declared_only",
+    "loaded_and_queryable",
+    "model_reference_behavior_proven",
+    "kernel_admission_proven",
+    "kernel_capability_enforced",
+    "executable_conformance_proven"
+  ],
+  "verification_contract": {
+    "suite_id": "ANDY-DOMAIN-ACTIVATION-CONFORMANCE",
+    "verification_file": "003_ANDY_Verification_v1_0_0_alpha_7.py",
+    "must_compile_model": true,
+    "must_compile_verification": true,
+    "must_execute_not_simulate": true,
+    "must_emit_json_result": true,
+    "exit_zero_only_on_pass": true,
+    "required_status": "PASS",
+    "declared_tests_must_equal_executed_tests": true,
+    "declared_tests": 260,
+    "declared_tests_status": "finalized",
+    "required_failures": 0,
+    "activation_admission_requires_report": true,
+    "activation_admission_report_must_verify_hashes": true,
+    "test_result_classification_required": true,
+    "proof_classification_required": true,
+    "semantic_result_digest_required": true,
+    "required_test_groups": [
+      "package_and_manifest_integrity",
+      "model_compilation_and_api",
+      "namespace_and_registry_population",
+      "workflow_graph_integrity",
+      "capability_contract_specificity",
+      "validator_contract_integrity",
+      "policy_validator_mapping_integrity",
+      "event_registry_and_event_equivalence",
+      "adapter_contract_publication",
+      "adapter_macro_routing",
+      "adapter_payload_parser_strictness",
+      "adapter_route_evidence_persistence",
+      "real_activation_admission_report_validation",
+      "kernel_candidate_registration",
+      "kernel_capability_execution",
+      "authorization_and_authority_enforcement",
+      "concurrency_and_idempotency_enforcement",
+      "permitted_mutation_store_enforcement",
+      "validator_order_enforcement",
+      "snapshot_creation_and_integrity",
+      "runtime_workflow_creation",
+      "narrative_loading_and_validation",
+      "multi_stage_workflow_progression",
+      "composite_adopt_narrative_behavior",
+      "prompt_submission_behavior",
+      "composite_run_stage_to_review_behavior",
+      "stage_execution_behavior",
+      "artifact_slot_and_artifact_lifecycle_behavior",
+      "artifact_body_reference_resolution",
+      "composite_accept_artifact_with_evidence_behavior",
+      "evidence_packet_and_dependency_eligibility_behavior",
+      "stage_completion_and_advancement_behavior",
+      "workflow_completion_and_finalization_behavior",
+      "context_reconstruction_behavior",
+      "artifact_set_export_integrity",
+      "structured_final_export_projection_integrity",
+      "artifact_receipt_digest_clarity",
+      "runtime_state_serialization_consistency",
+      "export_and_artifact_receipt_behavior",
+      "restore_and_reopen_behavior",
+      "blocked_state_semantics",
+      "negative_path_fail_closed_behavior",
+      "composite_partial_failure_behavior",
+      "deterministic_verification_result",
+      "semantic_result_digest",
+      "proof_classification_and_enforcement_coverage",
+      "verification_group_reporting",
+      "internal_testing_workflow",
+      "verification_meta_tests",
+      "documentation_and_release_consistency",
+      "peer_review_regression_coverage"
+    ],
+    "required_test_result_fields": [
+      "test_id",
+      "group",
+      "test_kind",
+      "proof_class",
+      "enforcement_level",
+      "passed",
+      "evidence"
+    ],
+    "allowed_proof_classes": [
+      "declared_only",
+      "loaded_and_queryable",
+      "model_reference_behavior_proven",
+      "kernel_admission_proven",
+      "kernel_capability_enforced",
+      "executable_conformance_proven"
+    ],
+    "required_summary_fields": [
+      "proof_class_summary",
+      "scenario_summary",
+      "semantic_result_digest",
+      "required_test_groups_emitted",
+      "activation_admission_report_tests_passed",
+      "kernel_capability_execution_tests_passed",
+      "multi_stage_progression_tests_passed",
+      "artifact_set_export_tests_passed",
+      "artifact_body_resolution_tests_passed",
+      "capability_contract_specificity_tests_passed",
+      "event_equivalence_tests_passed",
+      "snapshot_integrity_tests_passed",
+      "restore_and_reopen_tests_passed"
+    ]
+  },
+  "last_verified_result": {
+    "file": "ANDY_Verification_Result_v1.0.0-alpha.7.final_patched.json",
+    "sha256": "51c6f7eb6f2c2e6cda98004f1205ac00a600b4ded1eaf61b7141f8dd77a85d82",
+    "semantic_result_digest": "2b85c23848322bde6c9258433d06ebbd4cd7fbc22a3d93a356f17aa5038e1772",
+    "deterministic_across_repeated_runs": true,
+    "deterministic_across_hash_seeds": true,
+    "required_for_activation": true,
+    "required_for_release_attestation": true,
+    "status": "verified"
+  },
+  "release_integrity": {
+    "component_hashes_finalized_after_component_files_exist": true,
+    "hash_algorithm": "sha256",
+    "hash_format": "lowercase_hex",
+    "manifest_digest_status": "reissued_alpha7_with_awka4_event_registry_projection",
+    "component_hashes_finalized": true,
+    "activation_ready": true,
+    "finalized_component_hashes": {
+      "002_ANDY_Model_v1_0_0_alpha_7.py": "99896e5584e5c7ddf347b4584f751c530985c7e16c8d602738b2a326bc2411ca",
+      "003_ANDY_Verification_v1_0_0_alpha_7.py": "650adfe2c5b602789864e1d5f9be17230d978815ad539957eae8f2e315e142ee"
+    },
+    "finalized_declared_tests": 260,
+    "last_verified_result_file": "ANDY_Verification_Result_v1.0.0-alpha.7.final_patched.json",
+    "last_verified_result_sha256": "51c6f7eb6f2c2e6cda98004f1205ac00a600b4ded1eaf61b7141f8dd77a85d82",
+    "last_verified_semantic_result_digest": "2b85c23848322bde6c9258433d06ebbd4cd7fbc22a3d93a356f17aa5038e1772",
+    "last_verified_status": "PASS",
+    "activation_ready_requires": [
+      "model_component_hash_verified",
+      "verification_component_hash_verified",
+      "declared_tests_finalized",
+      "verification_passed",
+      "semantic_result_digest_verified",
+      "real_activation_admission_report_tests_passed",
+      "kernel_capability_execution_tests_passed",
+      "multi_stage_progression_tests_passed",
+      "artifact_set_export_tests_passed",
+      "artifact_body_resolution_tests_passed",
+      "capability_contract_specificity_tests_passed",
+      "event_equivalence_tests_passed",
+      "capability_specific_concurrency_tests_passed",
+      "policy_validator_mapping_tests_passed",
+      "complete_snapshot_digest_tests_passed",
+      "restore_and_reopen_tests_passed",
+      "proof_classification_summary_emitted",
+      "release_status_finalized_or_approved_release_candidate"
+    ],
+    "real_activation_admission_report_tests_passed": true,
+    "kernel_capability_execution_tests_passed": true,
+    "multi_stage_progression_tests_passed": true,
+    "artifact_set_export_tests_passed": true,
+    "artifact_body_resolution_tests_passed": true,
+    "capability_contract_specificity_tests_passed": true,
+    "event_equivalence_tests_passed": true,
+    "snapshot_integrity_tests_passed": true,
+    "restore_and_reopen_tests_passed": true,
+    "semantic_result_digest_tests_passed": true,
+    "proof_classification_summary_emitted": true,
+    "required_test_groups_emitted": true,
+    "activation_admission_report_tests_passed": true,
+    "awka_alpha4_event_registry_projection_tests_passed": true
+  },
+  "awka_alpha4_registry_projection_contract": {
+    "compatibility_defect_id": "A7-ACT-BLOCK-001",
+    "activation_failure_basis": "AWKA v1.0.0-alpha.4 rejects candidate registry sets containing event_registry because alpha.4 publishes only its fixed Definition Registry set.",
+    "decision": "Do not extend AWKA alpha.4; project ANDY Event Registry definitions into schema_registry for AWKA alpha.4 activation publication.",
+    "canonical_event_registry_semantics_preserved": true,
+    "first_class_event_registry_publication_for_awka_alpha4": false,
+    "projection_registry": "schema_registry",
+    "projection_definition_id": "ANDY.SCHEMA.EVENT_REGISTRY_CATALOG",
+    "projected_semantics": "ANDY.REGISTRY.EVENT",
+    "event_definition_count": 37,
+    "fixed_publication_registry_set": [
+      "entity_registry",
+      "capability_registry",
+      "validator_registry",
+      "renderer_registry",
+      "workflow_registry",
+      "tool_registry",
+      "schema_registry",
+      "policy_registry"
+    ],
+    "activation_publication_must_not_emit": [
+      "event_registry"
+    ],
+    "event_contract_validator_resolution": "ANDY.VAL.EVENT_CONTRACT resolves event definitions through ANDY.SCHEMA.EVENT_REGISTRY_CATALOG during AWKA alpha.4 activation and runtime validation."
+  }
+}

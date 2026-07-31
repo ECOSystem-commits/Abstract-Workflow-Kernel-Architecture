@@ -1,0 +1,29 @@
+{
+  "andy_active_version": 41,
+  "artifact_set_receipt_ids": [
+    "RCPT-ANDY-WF-000001-ARTSET-0001"
+  ],
+  "awka_active_version": 30,
+  "capability_result": {
+    "failure_code": null,
+    "invocation_id": "ANDY-INV-CLOSE-WORKFLOW-000001",
+    "mutation_occurred": true,
+    "new_version": 30,
+    "outcome": "accepted",
+    "prior_state_digest": "110775e771187eaacf3f0bccbc20c1a3b21bb4409921c53380e704b37c8ed44d",
+    "prior_version": 29,
+    "result_state_digest": "9e3e2ac26684a9ae00b1866fcaeaefa8cd33c81f04b19678262e6eb4c4b04943"
+  },
+  "closure_reason": "Workflow finalized and artifact set exported successfully.",
+  "closure_record_id": "CLOSE-ANDY-WF-000001-001",
+  "closure_status": "closed",
+  "command": "Close workflow",
+  "current_state": "CLOSED",
+  "domain_state": "DOMAIN_ACTIVE",
+  "kernel_state": "ACTIVE",
+  "next_registered_workflow_command": null,
+  "previous_state": "EXPORTED",
+  "status": "PASS",
+  "workflow_instance_id": "ANDY-WF-000001",
+  "workflow_status": "closed"
+}
