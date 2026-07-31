@@ -1,10 +1,8 @@
 # AWKA
 
-# Abstract Workflow Kernel Architecture
+## Abstract Workflow Kernel Architecture
 
-*A microkernel architecture for governed Large Language Model (LLM) applications.*
-
----
+_A microkernel architecture for governed Large Language Model (LLM) applications._
 
 ## Overview
 
@@ -25,8 +23,6 @@ AWKA is not a chatbot, prompt library, or agent framework.
 
 It is an architectural kernel for governed AI-assisted applications.
 
----
-
 ## Positioning
 
 AWKA does **not** challenge the current direction of the AI application ecosystem.
@@ -41,7 +37,19 @@ Modern frameworks are rapidly improving:
 - observability;
 - external data and tool connectivity.
 
-AWKA is compatible with these directions, but operates at a different architectural layer.
+**AWKA would not have been possible without this evolution.**
+
+The emergence of capable AI agent platforms revealed a new architectural problem: once AI systems can coordinate actions, call tools, persist memory, generate artifacts, and participate in multi-step workflows, the critical question is no longer only how to make them more capable. The critical question becomes when their outputs, actions, or conclusions are allowed to become authoritative state.
+
+AWKA exists because current AI systems are powerful enough to require a governance boundary.
+
+Agent frameworks and AI application platforms provide increasingly sophisticated execution capabilities. They help systems reason, plan, coordinate, retrieve information, call tools, and produce outputs. AWKA assumes those capabilities exist. It does not attempt to replace them.
+
+Instead, AWKA addresses the architectural layer that appears after those capabilities become useful:
+
+> When should an AI-assisted operation be admitted into governed workflow state?
+
+In this sense, AWKA is best understood as a **governance boundary** for consequential AI-assisted workflows.
 
 Where agent frameworks ask:
 
@@ -51,9 +59,7 @@ AWKA asks:
 
 > When is an AI-assisted operation allowed to become authoritative workflow state?
 
-In this sense, AWKA is best understood as a **governance boundary** for consequential AI-assisted workflows.
-
----
+AWKA is therefore complementary to modern AI agent platforms. It depends on their progress, but separates their generative, probabilistic, and tool-using behavior from the deterministic act of admitting state, evidence, artifacts, and workflow transitions into an authoritative system of record.
 
 ## Research Motivation
 
@@ -78,8 +84,6 @@ AWKA explores an alternative hypothesis:
 
 The project investigates whether AI-assisted systems can remain flexible and probabilistic at the reasoning layer while becoming deterministic and verifiable at the governance layer.
 
----
-
 ## Core Design Principles
 
 AWKA is built around several architectural principles.
@@ -97,50 +101,48 @@ AWKA is built around several architectural principles.
 - **Runtime immutability after Domain activation**
 - **Tool and model output treated as data until admitted**
 - **Artifacts as projections, not sources of truth**
-
----
+- **Conversation as expression, not authority**
+- **Fail-closed governance under ambiguity**
 
 ## Architecture
 
 ```text
-                    User
-                     |
-             Natural Language
-                     |
-        +------------------------+
-        |      AWKA Kernel        |
-        +------------------------+
-           Constitution
-           Runtime
-           Verification
-                     |
-        Domain Runtime Activation
-                     |
-        +------------------------+
-        |    Domain Runtime       |
-        +------------------------+
-           Entities
-           Capabilities
-           Validators
-           Workflows
-           Renderers
-           Policies
-           Tool Bindings
-                     |
-              Workflow Instance
-                     |
-    Evidence -> Candidate Facts -> Canonical State
-                     |
-                Snapshots
-                     |
-              Pure Renderers
-                     |
-                Artifacts
-                     |
-             Artifact Receipts
+                   User
+                    |
+            Natural Language
+                    |
+       +------------------------+
+       |      AWKA Kernel       |
+       +------------------------+
+          Constitution
+          Runtime
+          Verification
+                    |
+       Domain Runtime Activation
+                    |
+       +------------------------+
+       |    Domain Runtime      |
+       +------------------------+
+          Entities
+          Capabilities
+          Validators
+          Workflows
+          Renderers
+          Policies
+          Tool Bindings
+                    |
+             Workflow Instance
+                    |
+   Evidence -> Candidate Facts -> Canonical State
+                    |
+               Snapshots
+                    |
+             Pure Renderers
+                    |
+               Artifacts
+                    |
+            Artifact Receipts
 ```
-
----
 
 ## Execution Model
 
@@ -164,8 +166,6 @@ These stages remain separate by design.
 
 Activating a Domain Runtime prepares the execution environment but does **not** create business data.
 
----
-
 ## Architectural Layers
 
 ```text
@@ -187,8 +187,6 @@ The Kernel contains no business knowledge.
 
 Domain behavior belongs to Domain Runtime Definitions.
 
----
-
 ## Project Structure
 
 ```text
@@ -202,14 +200,15 @@ AWKA/
 ├── linda/
 │   └── Reference Domain Runtime
 │
+├── andy/
+│   └── Narrative workflow Domain Runtime
+│
 ├── docs/
-│   └── User guides, roadmap, and handoff documents
+│   └── User guides, roadmap, handoff documents, and analysis reports
 │
 └── examples/
     └── Demonstration materials and test fixtures
 ```
-
----
 
 ## Repository Components
 
@@ -242,11 +241,9 @@ The Kernel is responsible for:
 - atomic transaction behavior;
 - optimistic concurrency controls.
 
----
-
 ### LINDA
 
-LINDA is the current reference Domain Runtime.
+LINDA, the **Language Intake and Narrative Documentation Authority**, is the current reference Domain Runtime.
 
 It demonstrates how a complete business workflow can be implemented without modifying the AWKA Kernel.
 
@@ -266,21 +263,57 @@ The current implementation models a controlled language-services Job Report work
 
 LINDA is a reference domain, not the AWKA Kernel itself.
 
----
+### ANDY
+
+ANDY, the **Adopted Narrative Directional Yielder**, is a narrative workflow Domain Runtime for AWKA.
+
+ANDY demonstrates how AWKA can govern an AI-assisted narrative or procedural workflow without allowing prompt text, draft artifacts, model output, tool output, or informal conversation to become authoritative state directly.
+
+ANDY contributes:
+
+- narrative workflow entities;
+- one controlled narrative procedure workflow;
+- primitive and composite Capabilities;
+- validation-before-mutation controls;
+- final export projection integrity;
+- artifact-set export governance;
+- artifact body resolution;
+- runtime state serialization consistency;
+- Artifact Receipt and Artifact Set Receipt digest controls;
+- adapter routing rules for approved workflow commands;
+- AWKA alpha.4-compatible Event Registry Catalog projection;
+- executable conformance verification.
+
+ANDY is a Domain Runtime, not the AWKA Kernel itself.
+
+Activation publishes and freezes ANDY definitions, but does **not** create a workflow instance or business data.
+
+## ANDY v1.0.0-alpha.7: Rigid Governance Runtime
+
+ANDY v1.0.0-alpha.7 is a **rigid governance** version of ANDY.
+
+Rigid means that workflow mutation is constrained by registered Capability routes, Validator gates, state preconditions, stage rules, required artifact slots, Evidence Packet requirements, and explicit user-confirmed transitions.
+
+The user may request action, but the user cannot bypass the active workflow contract with vague language, shorthand commands, conversational approval, or premature advancement.
+
+The first alpha.7 workflow test demonstrated this property:
+
+- incomplete stage execution did not mutate state;
+- shorthand `Accept` did not accept an artifact;
+- an attempted evaluate-and-advance command evaluated the stage but blocked advancement until explicit completion confirmation occurred;
+- artifact acceptance did not imply stage completion;
+- stage completion did not imply advancement;
+- finalization, export, and closure remained separate governed operations.
+
+This is intentional. ANDY alpha.7 shows that even an authorized user must operate through the governance workflow.
 
 ## Current Baseline
 
-Current baseline:
+### AWKA Kernel
 
-```text
-AWKA Kernel
-Version: 1.0.0-alpha.4
-Status: Research Prototype
-
-LINDA Generic Hardened Domain Runtime
-Version: 1.0.0-alpha.6
-Status: Reference Domain Runtime
-```
+- Version: `1.0.0-alpha.4`
+- Status: Research Prototype
+- Executable conformance: `17/17 PASS`
 
 The current AWKA Kernel baseline uses a three-file bootstrap package:
 
@@ -290,6 +323,11 @@ The current AWKA Kernel baseline uses a three-file bootstrap package:
 003_AWKA_Verification_v1_0_0_alpha_4.py
 ```
 
+### LINDA Generic Hardened Domain Runtime
+
+- Version: `1.0.0-alpha.6`
+- Status: Reference Domain Runtime
+
 The current LINDA Generic baseline uses a three-file Domain Runtime package:
 
 ```text
@@ -298,11 +336,29 @@ The current LINDA Generic baseline uses a three-file Domain Runtime package:
 003_LINDA_Generic_Verification_v1_0_0_alpha_6.py
 ```
 
+### ANDY Domain Runtime
+
+- Version: `1.0.0-alpha.7`
+- Status: Rigid Narrative Workflow Domain Runtime
+- Compatible Kernel: `AWKA v1.0.0-alpha.4`
+- Executable conformance: `260/260 PASS`
+- Release theme: Rigid Governance Workflow and AWKA Alpha.4 Event Registry Projection Compatibility Release
+
+The current ANDY baseline uses a three-file Domain Runtime package:
+
+```text
+001_ANDY_Manifest_v1.0.0-alpha.7.json
+002_ANDY_Model_v1_0_0_alpha_7.py
+003_ANDY_Verification_v1_0_0_alpha_7.py
+```
+
+ANDY activation is message-delivered and is not a fourth release component.
+
+Activation verifies the Manifest, Model, Verification Suite, Definition Registry population, conformance report, Event Registry Catalog projection, and Kernel activation boundary before freezing the Domain Runtime definitions.
+
 The installation or activation directive is message-delivered and is not a fourth release component unless a future release explicitly declares otherwise.
 
----
-
-## Current Reference Runtime
+## Current Reference Runtimes
 
 ### Generic LINDA
 
@@ -324,7 +380,37 @@ Organization-specific overrides are optional, auditable, and non-evidentiary.
 
 Final customer-facing artifacts must not display unresolved placeholders.
 
----
+### ANDY Narrative Workflow
+
+ANDY demonstrates a governed narrative workflow under the same AWKA Kernel boundary used by other Domain Runtimes.
+
+The alpha.7 implementation emphasizes:
+
+- separation between Domain activation and workflow creation;
+- no workflow instance creation during activation;
+- no Canonical State, Snapshot, Artifact Receipt, or governed instance data created as an activation side effect;
+- AWKA alpha.4-compatible Event Registry Catalog projection through `schema_registry`;
+- no first-class `event_registry` publication under AWKA alpha.4;
+- composite Capabilities built from primitive Capability sequences;
+- preservation of the primitive artifact lifecycle under composite operations;
+- explicit adapter routing for payload-bearing commands;
+- rejection of vague, incomplete, shorthand, or wrong-state commands as non-mutating or precondition-blocked;
+- rigid governance where even an authorized user cannot bypass the workflow sequence;
+- final export projection QA that prevents draft-status language from leaking into final exports;
+- Artifact Receipts that record both source artifact digests and exported projection digests;
+- Artifact Set Receipts that record package digests;
+- artifact body resolution records for exported member artifacts;
+- runtime serialization consistency between Canonical State and Snapshot views.
+
+The current ANDY activation milestone is:
+
+```text
+ANDY Domain Runtime v1.0.0-alpha.7 activated on AWKA v1.0.0-alpha.4.
+Executable conformance: 260/260 PASS.
+Rigid governance workflow enabled.
+Event Registry Catalog projection active for AWKA alpha.4 compatibility.
+Awaiting workflow command: Run New ANDY Workflow.
+```
 
 ## Example Lifecycle
 
@@ -366,9 +452,7 @@ Only committed Canonical State represents workflow truth.
 
 A generated artifact is a projection of a Snapshot.
 
-A final controlled export is not complete until the final artifact bytes are hashed and an Artifact Receipt is created.
-
----
+A final controlled export is not complete until the final artifact bytes are hashed and an Artifact Receipt or Artifact Set Receipt is created.
 
 ## Why "Microkernel"?
 
@@ -392,8 +476,6 @@ The Kernel should not change when a new business domain is introduced.
 
 A new domain should be supplied as a verified Domain Runtime, activated through the Kernel, and frozen through Definition Registries before operational use.
 
----
-
 ## Compatibility With Existing AI Frameworks
 
 AWKA is compatible with existing AI application frameworks because it operates at a different architectural layer.
@@ -407,9 +489,7 @@ AWKA is compatible with existing AI application frameworks because it operates a
 
 AWKA does not replace these systems.
 
-It can complement them by adding a deterministic governance boundary around consequential workflow operations.
-
----
+It can complement these systems by adding a deterministic governance boundary around consequential workflow operations.
 
 ## Execution Witness Direction
 
@@ -433,8 +513,6 @@ An Execution Observation is audit evidence.
 
 It is **not** Source Evidence and must never populate business fields merely because it records that processing occurred.
 
----
-
 ## Research Goals
 
 The project explores several research questions.
@@ -442,19 +520,23 @@ The project explores several research questions.
 - Can architectural kernels improve LLM governance?
 - Can prompts become transport rather than behavioral authority?
 - Can business behavior be isolated into reusable Domain Runtimes?
+- Can narrative workflows be governed without allowing draft artifacts or prompt text to bypass architectural authority?
 - Can executable architectural verification improve reliability?
 - Can deterministic workflow governance coexist with probabilistic reasoning?
 - Can artifacts become verifiable projections rather than informal outputs?
 - Can multi-agent risk be reduced by separating proposal, evidence, validation, and Canonical State?
+- Can rigid workflow governance improve reliability without eliminating useful AI-assisted generation?
 
 These questions remain open and are intended to encourage discussion.
-
----
 
 ## Roadmap
 
 Planned directions include:
 
+- evidence quality validation hardening;
+- placeholder evidence rejection;
+- raw conversation-turn persistence for inspection-grade transcript generation;
+- receipt digest semantics clarification;
 - configuration lifecycle hardening;
 - signed Manifests and trusted release support;
 - migration and compatibility framework;
@@ -473,16 +555,22 @@ Planned directions include:
 
 The roadmap intentionally prioritizes runtime enforcement before ontology or semantic-graph expansion.
 
----
-
 ## Current Status
 
 Current maturity:
 
 ```text
 AWKA
-Version: 1.0.0-alpha
+Version: 1.0.0-alpha.4
 Status: Research Prototype
+
+LINDA Generic Hardened Domain Runtime
+Version: 1.0.0-alpha.6
+Status: Reference Domain Runtime
+
+ANDY Domain Runtime
+Version: 1.0.0-alpha.7
+Status: Rigid Narrative Workflow Domain Runtime
 ```
 
 The project is currently intended for:
@@ -499,8 +587,6 @@ It is **not** production software.
 
 A production implementation would require additional controls such as durable transactional storage, authentication integration, tenant isolation, distributed locking, secure tool execution, signed releases, recovery procedures, monitoring, and independent security review.
 
----
-
 ## Contributing
 
 This repository is currently an architectural research project.
@@ -513,6 +599,7 @@ Useful contributions include:
 - conformance test design;
 - negative-path scenario design;
 - Domain Runtime experiments;
+- narrative workflow governance experiments, including ANDY scenarios;
 - documentation improvements;
 - runtime hardening proposals;
 - failure-mode analysis;
@@ -522,6 +609,4 @@ Please preserve the core governance boundary:
 
 > Semantic richness may explain execution. It must not bypass authority.
 
----
-
-> "Behavior is a consequence of architecture."
+> Behavior is a consequence of architecture.
